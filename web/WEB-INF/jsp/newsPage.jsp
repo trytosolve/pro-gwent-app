@@ -18,5 +18,8 @@
 
 <body>
 <h1 class=center>Gwent news</h1>
+<div>
+    <a href="/news/1">РФ місяць не пускає консулів до викрадених прикордонників</a>
+</div>
 </body>
 </html>

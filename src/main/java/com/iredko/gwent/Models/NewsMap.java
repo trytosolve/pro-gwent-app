@@ -1,5 +1,6 @@
 package com.iredko.gwent.Models;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,5 +16,4 @@ public class NewsMap {
         return news;
 
     }
-
 }
