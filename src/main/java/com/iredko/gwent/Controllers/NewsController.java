@@ -17,7 +17,9 @@ public class NewsController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getMain(ModelAndView model) throws IOException {
-        Map map = (Map) getNewsMap();
+        model.addObject("text", "hello paci");
+        getNewsMap().getNews(1);
+        getNewsMap().getNews(2);
         model.setViewName("newsPage");
         return model;
     }
