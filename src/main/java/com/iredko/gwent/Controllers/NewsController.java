@@ -27,6 +27,7 @@ public class NewsController {
         model.addObject("discription1", news1.getDiscription());
         model.addObject("name1", news1.getName());
         model.addObject("path1", news1.getPath());
+
         model.setViewName("newsPage");
         return model;
     }
