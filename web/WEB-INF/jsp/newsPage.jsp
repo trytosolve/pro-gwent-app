@@ -16,10 +16,28 @@
     </style>
 </head>
 
-<body>
 <h1 class=center>Gwent news</h1>
+<div></div>
 <div>
-    <a href="/news/1">РФ місяць не пускає консулів до викрадених прикордонників</a>
+    ${date}
+    <a href="${path}">${name}</a>
 </div>
+
+<div>
+    ${discription}
+</div>
+
+<div>
+    ${date1}
+    <a href="${path1}">${name1}</a>
+</div>
+
+<div>
+    ${discription1}
+</div>
+<div>
+    ${text}
+</div>
+
 </body>
 </html>
