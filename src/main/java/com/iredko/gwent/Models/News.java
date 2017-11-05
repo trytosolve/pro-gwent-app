@@ -1,15 +1,9 @@
 package com.iredko.gwent.Models;
 
-import java.io.*;
-import java.nio.channels.Channel;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
 public class News {
     private static int count;
     private final int id = ++count;
-    private String postDate;
+    private String postDate; //TODO эти поля никто не меняет. СДелай их final
     private String path;
     private String name;
     private String text;
