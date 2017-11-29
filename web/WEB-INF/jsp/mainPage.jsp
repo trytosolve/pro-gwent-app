@@ -18,10 +18,12 @@
 </head>
 <body>
     <h1 class="center">Gwent app</h1>
+
     <h2 class="center">
         <a href="/news">Новости</a>
         <a href="/patches">Патч-ноуты</a>
         <a href="/cards">Карты</a>
+        <a href="/login">Вход</a>
     </h2>
 </body>
 </html>

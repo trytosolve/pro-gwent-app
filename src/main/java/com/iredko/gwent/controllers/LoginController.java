@@ -14,4 +14,10 @@ public class LoginController {
         model.setViewName("loginPage");
         return model;
     }
+
+    @RequestMapping(path = "/reg", method = RequestMethod.POST)
+    public ModelAndView reqAction(ModelAndView model) {
+        model.setViewName("reqActPage");
+        return model;
+    }
 }
