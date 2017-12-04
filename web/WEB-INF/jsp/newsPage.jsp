@@ -17,7 +17,23 @@
     </style>
 </head>
 <body>
-<h1 class=center>Gwent news</h1>
+<h1 class="center"> <a href="/">Gwent app</a></h1>
+
+<h2 class="center">
+    <a href="/news">Новости</a>
+    <a href="/patches">Патч-ноуты</a>
+    <a href="/cards">Карты</a>
+    <c:choose>
+        <c:when test="${empty sessionScope.USER}">
+            <a href="/login">Вход</a>
+            <br />
+        </c:when>
+        <c:otherwise>
+            ${sessionScope.USER.name}<a href="/logout">(выйти)</a>
+            <br />
+        </c:otherwise>
+    </c:choose>
+</h2>
 <div></div>
 
 <c:forEach items="${newsList}" var="news">

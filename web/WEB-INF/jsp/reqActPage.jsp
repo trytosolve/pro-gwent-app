@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,23 +11,24 @@
     </style>
 </head>
 <body>
-<h1 class="center">Gwent app</h1>
+<h1 class="center"> <a href="/">Gwent app</a></h1>
 
 <h2 class="center">
     <a href="/news">Новости</a>
     <a href="/patches">Патч-ноуты</a>
     <a href="/cards">Карты</a>
     <c:choose>
-        <c:when test="${session.getAttribute(User)==null}">
+        <c:when test="${empty sessionScope.USER}">
             <a href="/login">Вход</a>
-            <br/>
+            <br />
         </c:when>
         <c:otherwise>
-            ${session.getAttribute(USER).getName}
-            <br/>
+            ${sessionScope.USER.name}<a href="/logout">(выйти)</a>
+            <br />
         </c:otherwise>
     </c:choose>
-    Регистрация для ${user} успешна
 </h2>
+<div>Регистрация для ${user} успешна</div>
+
 </body>
 </html>

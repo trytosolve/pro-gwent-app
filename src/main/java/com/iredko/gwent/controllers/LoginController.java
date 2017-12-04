@@ -22,7 +22,7 @@ public class LoginController {
     UserSet userSet = new UserSet();
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getLogin(ModelAndView model) {
+    public ModelAndView getLogin(HttpSession httpSession,ModelAndView model) {
         model.setViewName("loginPage");
         return model;
     }
@@ -33,7 +33,6 @@ public class LoginController {
         User newUser = new User(name,pass);
         userSet.addUser(newUser);
         httpSession.setAttribute("USER",newUser);
-        model.addObject("session",httpSession);
         model.addObject("user", name);
         model.setViewName("reqActPage");
         return model;

@@ -5,15 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping(path = "/")
-public class MainPageController {
+public class LogoutController {
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getMain(HttpSession httpSession, ModelAndView model) {
-        model.setViewName("mainPage");
-        return model;
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ModelAndView method() {
+        return new ModelAndView();
     }
 }
