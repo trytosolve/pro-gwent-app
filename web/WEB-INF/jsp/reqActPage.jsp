@@ -14,7 +14,7 @@
 <h1 class="center">Gwent app</h1>
 
 <h2 class="center">
-    <a>Регистрация успешна</a>
+    Регистрация для ${user} успешна
 </h2>
 </body>
 </html>

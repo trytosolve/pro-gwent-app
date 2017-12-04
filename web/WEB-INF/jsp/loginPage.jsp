@@ -15,7 +15,6 @@
 <body>
 <form action="${pageContext.request.contextPath}/login/reg" method="post">
     <table width="20%" align="center">
-
         <tr>
             <td colspan=2 style="text-align: center;"><span style="font-size: medium; "><b>Pro-Gwent Login Page</b></span>
             </td>
