@@ -3,13 +3,13 @@ package com.iredko.gwent.models;
 import sun.security.util.Password;
 
 public class User {
-    public User(String name, Password password) {
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
     }
 
     private String  name;
-    private Password password;
+    private String password;
 
     public String getName() {
         return name;
@@ -19,11 +19,11 @@ public class User {
         this.name = name;
     }
 
-    public Password getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Password password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 }

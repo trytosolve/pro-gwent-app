@@ -23,7 +23,17 @@
         <a href="/news">Новости</a>
         <a href="/patches">Патч-ноуты</a>
         <a href="/cards">Карты</a>
-        <a href="/login">Вход</a>
+        <c:choose>
+            <c:when test="${session.getAttribute(User)==null}">
+                <a href="/login">Вход</a>
+                <br />
+            </c:when>
+            <c:otherwise>
+                ${session.getAttribute(USER).getName}
+                <br />
+            </c:otherwise>
+        </c:choose>
     </h2>
+    <div>Some text about session: ${session.creationTime}</div>
 </body>
 </html>

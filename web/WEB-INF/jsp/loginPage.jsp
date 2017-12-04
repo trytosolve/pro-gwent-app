@@ -13,6 +13,21 @@
 
 </head>
 <body>
+<h2 class="center">
+    <a href="/news">Новости</a>
+    <a href="/patches">Патч-ноуты</a>
+    <a href="/cards">Карты</a>
+    <c:choose>
+        <c:when test="${session.getAttribute(User)==null}">
+            <a href="/login">Вход</a>
+            <br />
+        </c:when>
+        <c:otherwise>
+            ${session.getAttribute(USER).getName}
+            <br />
+        </c:otherwise>
+    </c:choose>
+</h2>
 <form action="${pageContext.request.contextPath}/login/reg" method="post">
     <table width="20%" align="center">
         <tr>

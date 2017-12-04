@@ -19,7 +19,7 @@ import java.util.HashMap;
 @RequestMapping("/login")
 public class LoginController {
 
-    UserSet userSet;
+    UserSet userSet = new UserSet();
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getLogin(ModelAndView model) {
@@ -29,12 +29,13 @@ public class LoginController {
 
     @RequestMapping(path = "/reg", method = RequestMethod.POST)
     public ModelAndView reqAction(HttpSession httpSession,ModelAndView model,
-    @RequestParam("userid") String name,@RequestParam("pwd") Password pass) throws Exception {
+    @RequestParam("userid") String name,@RequestParam("pwd") String pass) throws Exception {
         User newUser = new User(name,pass);
         userSet.addUser(newUser);
         httpSession.setAttribute("USER",newUser);
-        model.setViewName("reqActPage");
+        model.addObject("session",httpSession);
         model.addObject("user", name);
+        model.setViewName("reqActPage");
         return model;
     }
 }
