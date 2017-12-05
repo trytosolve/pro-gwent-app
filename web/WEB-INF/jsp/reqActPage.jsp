@@ -28,7 +28,7 @@
         </c:otherwise>
     </c:choose>
 </h2>
-<div>Регистрация для ${user} успешна</div>
+<div class="center"><b>Авторизация для ${user} успешна</b></div>
 
 </body>
 </html>

@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Main page</title>
+    <title>New Account Page</title>
     <style>
         .center {
             text-align: center;
@@ -35,7 +35,7 @@
         </c:otherwise>
     </c:choose>
 </h2>
-<form action="${pageContext.request.contextPath}/login/reg" method="post">
+<form action="${pageContext.request.contextPath}/createAccount/create" method="post">
     <table width="20%" align="center">
         <tr>
             <td colspan=2 style="text-align: center;"><span
@@ -55,13 +55,11 @@
 
         <tr>
             <td><input type="Reset" onclick="a" value="Reset"></td>
-            <td><input type="submit" value="Login"></td>
+            <td><input type="submit" value="Create"></td>
 
-        </tr>
-        <tr>
-            <td><b><a href="/createAccount">New account</a></b></td>
         </tr>
     </table>
 </form>
+</body>
 </body>
 </html>
