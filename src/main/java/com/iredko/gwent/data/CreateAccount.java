@@ -1,6 +1,7 @@
 package com.iredko.gwent.data;
 
 import com.iredko.gwent.models.User;
+
 /*
 Класс для добавления нового пользователя
  */

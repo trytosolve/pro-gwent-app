@@ -1,6 +1,8 @@
 package com.iredko.gwent.data;
 
 import com.iredko.gwent.models.User;
+
+
 /*
 Клас авторизации пользователя в системе
  */
