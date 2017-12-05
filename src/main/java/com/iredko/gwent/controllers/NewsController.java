@@ -19,6 +19,7 @@ public class NewsController {
         this.newsList = newsList;
     }
 
+    //TODO Зачем тебе здесь сессия?
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getMain(HttpSession httpSession, ModelAndView model) throws IOException {
         model.addObject("newsList", newsList.getAll());
@@ -26,6 +27,7 @@ public class NewsController {
         return model;
     }
 
+    //TODO Зачем тебе здесь сессия?
     @RequestMapping(value="{id}",method = RequestMethod.GET)
     public ModelAndView getNews(HttpSession httpSession,@PathVariable int id, ModelAndView model) {
         model.addObject("text", newsList.getNews(id).getText());

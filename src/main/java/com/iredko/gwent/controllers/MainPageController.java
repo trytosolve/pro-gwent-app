@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(path = "/")
 public class MainPageController {
 
+    //TODO зачем тебе сдесь сессия?
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getMain(HttpSession httpSession, ModelAndView model) {
         model.setViewName("mainPage");

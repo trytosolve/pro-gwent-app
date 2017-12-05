@@ -7,6 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
+//TODO В принципе это вполне ОК и менять не надо,
+// просто хотел написать что может быть имеет смысл обьединить login и Logout контроллеры
+// потому что занимаются они по сути одним и тем же - текущим юзером. И тут вообще всего 1 метод.
 @Controller
 public class LogoutController {
 
