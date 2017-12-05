@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/createAccount")
-public class AccountCreating {
+public class AccountCreatingController {
 
     CreateAccount createAccount;
 
