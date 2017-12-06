@@ -52,6 +52,7 @@ public class UserRepository {
             stmt.setString(1, login);
             stmt.setString(2,password);
             stmt.setString(3, email);
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

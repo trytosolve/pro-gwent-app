@@ -32,7 +32,7 @@ public class LoginController {
     public ModelAndView login(ModelAndView model,HttpSession httpSession,@RequestParam("login") String login,
                                @RequestParam("pwd") String pass) throws Exception {
         LoginResult loginResult = securityManager.login(login,pass);
-        if (loginResult == LoginResult.LOGIN_OK) {
+        if (loginResult.equals(LoginResult.LOGIN_OK)) {
             httpSession.setAttribute("user", login);
         }
         model.addObject("result", loginResult);

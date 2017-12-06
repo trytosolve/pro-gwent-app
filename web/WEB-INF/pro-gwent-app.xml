@@ -16,7 +16,7 @@
 
     <bean class = "com.iredko.gwent.data.DbParams">
         <constructor-arg value = "root" />
-        <constructor-arg value = "powerpower13" />
+        <constructor-arg value = "power13" />
         <constructor-arg value = "jdbc:mysql://localhost:3306" />
     </bean>
 
