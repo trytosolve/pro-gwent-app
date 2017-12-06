@@ -1,8 +1,5 @@
 package com.iredko.gwent.data;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class DbParams {
 
     private String username;

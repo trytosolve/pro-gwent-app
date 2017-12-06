@@ -3,8 +3,6 @@ package com.iredko.gwent.data;
 import com.iredko.gwent.models.User;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
-
 /**
  * Итого мы имеем общую абстракцию занимающуюся управлением юзерами.
  * Метод для создания, метод для логина
@@ -12,23 +10,36 @@ import java.util.Map;
 
 @Component
 public class SecurityManager {
-    private final Map<String, String> usersMap = null;
+    UserRepository userRepository;
+
+    public SecurityManager(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public LoginResult login(String login, String pass) throws Exception {
-
-        return null;
+        User user = userRepository.getUserByLogin(login);
+        if (user.getLogin()==null) {
+            return LoginResult.NO_SUCH_USER;
+        } else if (user.getPassword().equals(pass)) {
+            return LoginResult.LOGIN_OK;
+        } else {
+            return LoginResult.WRONG_PASSWORD;
+        }
     }
 
     public CreationAccountResult createAccount(String login,String email,String password) throws Exception {
-//        if (usersMap.containsKey(user.getName())) {
-//            throw new Exception("Данный пользователь уже существует!");
-//        } else {
-//            usersMap.put(user.getName(), user.getPassword());
-//        }
-        return null;
-    }
-
-    public void authorizationCheck(String pass,User user) {
-
+        User user = userRepository.getUserByLogin(login);
+        if (user.getLogin() != null) {
+            return CreationAccountResult.LOGIN_IN_USE;
+        } else if (login==null || login.length()<5 || login.length()>20) {
+            return CreationAccountResult.INCORECT_LOGIN;
+        } else if (email == null) {
+            return CreationAccountResult.INCORECT_EMAIL;
+        } else if (password == null || password.length() < 5) {
+            return CreationAccountResult.INCORECT_PASSWORD;
+        } else {
+            userRepository.addUserToRepository(login,email,password);
+            return CreationAccountResult.REGITRATION_OK;
+        }
     }
 }

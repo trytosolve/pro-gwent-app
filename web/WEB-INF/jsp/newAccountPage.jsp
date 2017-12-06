@@ -35,7 +35,7 @@
         </c:otherwise>
     </c:choose>
 </h2>
-<form action="${pageContext.request.contextPath}/loginPage/createAccountPage/create" method="post">
+<form action="${pageContext.request.contextPath}/loginPage/createAccount" method="post">
     <table width="20%" align="center">
         <tr>
             <td colspan=2 style="text-align: center;"><span
