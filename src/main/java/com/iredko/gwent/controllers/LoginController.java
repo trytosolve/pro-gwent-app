@@ -23,13 +23,13 @@ public class LoginController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getLogin(ModelAndView model) {
+    public ModelAndView getLoginPage(ModelAndView model) {
         model.setViewName("loginPage");
         return model;
     }
 
-    @RequestMapping(value = "/reg", method = RequestMethod.POST)
-    public ModelAndView regLog(ModelAndView model,HttpSession httpSession,@RequestParam("login") String login,
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView login(ModelAndView model,HttpSession httpSession,@RequestParam("login") String login,
                                @RequestParam("pwd") String pass) throws Exception {
         LoginResult loginResult = securityManager.login(login,pass);
         if (loginResult == LoginResult.LOGIN_OK) {
@@ -40,20 +40,20 @@ public class LoginController {
         return model;
     }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public ModelAndView method(HttpSession httpSession) {
+    @RequestMapping(value = "/logoutPage", method = RequestMethod.GET)
+    public ModelAndView logout(HttpSession httpSession) {
         httpSession.removeAttribute("user");
         return new ModelAndView("redirect:"+"/");
     }
 
-    @RequestMapping(value = "/createAccount",method = RequestMethod.GET)
-    public ModelAndView create(HttpSession httpSession, ModelAndView model) {
+    @RequestMapping(value = "/createAccountPage",method = RequestMethod.GET)
+    public ModelAndView getNewAccountPage(HttpSession httpSession, ModelAndView model) {
         model.setViewName("newAccountPage");
         return model;
     }
 
-    @RequestMapping(path = "/create", method = RequestMethod.POST)
-    public ModelAndView createAction(ModelAndView model,HttpSession httpSession, @RequestParam("userid") String login,
+    @RequestMapping(path = "/createAccount", method = RequestMethod.POST)
+    public ModelAndView createAccount(ModelAndView model,HttpSession httpSession, @RequestParam("userid") String login,
                                      @RequestParam("pwd") String pass,@RequestParam("email") String email) throws Exception {
         CreationAccountResult creationAccountResult = securityManager.createAccount(login,email,pass);
         if (creationAccountResult == CreationAccountResult.REGITRATION_OK) {
