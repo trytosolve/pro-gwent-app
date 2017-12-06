@@ -1,4 +1,4 @@
-package com.iredko.gwent.models;
+package com.iredko.gwent.data;
 
 public class DbParams {
 

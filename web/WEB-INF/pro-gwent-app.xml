@@ -14,7 +14,7 @@
         <property name = "suffix" value = ".jsp" />
     </bean>
 
-    <bean class = "com.iredko.gwent.models.DbParams;">
+    <bean class = "com.iredko.gwent.data.DbParams;">
         <constructor-arg value = "root" />
         <constructor-arg value = "powerpower13" />
         <constructor-arg value = "jdbc:mysql://localhost:3306/mysql" />

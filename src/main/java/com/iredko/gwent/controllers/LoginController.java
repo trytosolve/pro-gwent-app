@@ -4,7 +4,6 @@ import com.iredko.gwent.data.CreationAccountResult;
 import com.iredko.gwent.data.LoginResult;
 import com.iredko.gwent.data.SecurityManager;
 import com.iredko.gwent.data.UserRepository;
-import com.iredko.gwent.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,11 +17,9 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     private SecurityManager securityManager;
-    private UserRepository userRepository;
 
-    public LoginController(SecurityManager securityManager, UserRepository userRepository) {
+    public LoginController(SecurityManager securityManager) {
         this.securityManager = securityManager;
-        this.userRepository = userRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -34,7 +31,7 @@ public class LoginController {
     @RequestMapping(value = "/reg", method = RequestMethod.POST)
     public ModelAndView regLog(ModelAndView model,HttpSession httpSession,@RequestParam("login") String login,
                                @RequestParam("pwd") String pass) throws Exception {
-        LoginResult loginResult = securityManager.login(userRepository.getUserByLogin(login));
+        LoginResult loginResult = securityManager.login(login,pass);
         if (loginResult == LoginResult.LOGIN_OK) {
             httpSession.setAttribute("user", login);
         }
@@ -58,7 +55,7 @@ public class LoginController {
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public ModelAndView createAction(ModelAndView model,HttpSession httpSession, @RequestParam("userid") String login,
                                      @RequestParam("pwd") String pass,@RequestParam("email") String email) throws Exception {
-        CreationAccountResult creationAccountResult = securityManager.createAccount(userRepository.getUserByLogin(login));
+        CreationAccountResult creationAccountResult = securityManager.createAccount(login,email,pass);
         if (creationAccountResult == CreationAccountResult.REGITRATION_OK) {
             httpSession.setAttribute("user", login);
         }

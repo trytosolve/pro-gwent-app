@@ -1,8 +1,6 @@
 package com.iredko.gwent.data;
 
-import com.iredko.gwent.models.DbParams;
 import com.iredko.gwent.models.User;
-import com.iredko.gwent.temp.DB;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
