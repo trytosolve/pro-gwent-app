@@ -1,26 +1,32 @@
 package com.iredko.gwent.models;
 
 import com.iredko.gwent.temp.DB;
+import org.springframework.stereotype.Component;
 import sun.security.util.Password;
 
 import java.sql.*;
 
+@Component
 public class User {
-    Connection conn;
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
+
+    private String  login;
+    private String password;
+    private String email;
+
+    public String getEmail() {
+        return email;
     }
 
-    private String  name;
-    private String password;
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getName() {
-        return name;
+        return login;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.login = name;
     }
 
     public String getPassword() {
@@ -32,26 +38,27 @@ public class User {
     }
 
     //---------------------------------------------------------------------
-/*        public void createUser(String name, String password, String email, Date createTime) {
-        try {
-            conn  = DriverManager.getConnection(DB.URL,DB.USERNAME,DB.PASSWORD);
-            String insert = "insert into webapp.users (Name,CountryCode,District,Population)" +
-                    "VALUES(?,?,?,?)";
-            Statement stmt = conn.prepareStatement(insert);
-            stmt.set
-
-//            String query = "select ID,Name,CountryCode,District,Population " +
-//                    "from world.city where Population>1000000 ORDER BY NAME ";
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
+//        public void createUser(String name, String password, String email, Date createTime) {
+//        Connection conn;
+//        try {
+//            conn  = DriverManager.getConnection(DB.URL,DB.USERNAME,DB.PASSWORD);
+//            String sql= "insert into webapp.users (Name,CountryCode,District,Population)" +
+//                    "VALUES(?,?,?,?)";
+//            PreparedStatement stmt = conn.prepareStatement(sql);
+//            stmt.setString(1, name);
+//            stmt.setString(2,password);
+//            stmt.setString(3, email);
+//            stmt.setDate(4,createTime);
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }finally {
+//            try {
+//                conn.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 }

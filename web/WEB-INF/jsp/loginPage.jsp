@@ -45,7 +45,7 @@
 
         <tr>
             <td>Username:</td>
-            <td><input type="text" size=25 name="userid"></td>
+            <td><input type="text" size=25 name="login"></td>
         </tr>
 
         <tr>
@@ -59,7 +59,7 @@
 
         </tr>
         <tr>
-            <td><b><a href="/createAccount">New account</a></b></td>
+            <td><b><a href="/login/createAccount">New account</a></b></td>
         </tr>
     </table>
 </form>

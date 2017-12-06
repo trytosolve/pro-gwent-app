@@ -48,6 +48,12 @@
             <td><input type="text" size=25 name="userid"></td>
         </tr>
 
+
+        <tr>
+            <td>Email:</td>
+            <td><input type="Email" size=25 name="email"></td>
+        </tr>
+
         <tr>
             <td>Password:</td>
             <td><input type="Password" size=25 name="pwd"></td>

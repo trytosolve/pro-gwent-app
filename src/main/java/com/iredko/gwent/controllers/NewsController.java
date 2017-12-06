@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -19,17 +18,15 @@ public class NewsController {
         this.newsList = newsList;
     }
 
-    //TODO Зачем тебе здесь сессия?
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getMain(HttpSession httpSession, ModelAndView model) throws IOException {
+    public ModelAndView getMain(ModelAndView model) throws IOException {
         model.addObject("newsList", newsList.getAll());
         model.setViewName("newsPage");
         return model;
     }
 
-    //TODO Зачем тебе здесь сессия?
     @RequestMapping(value="{id}",method = RequestMethod.GET)
-    public ModelAndView getNews(HttpSession httpSession,@PathVariable int id, ModelAndView model) {
+    public ModelAndView getNews(@PathVariable int id, ModelAndView model) {
         model.addObject("text", newsList.getNews(id).getText());
         model.setViewName("newsPageById");
         return model;
