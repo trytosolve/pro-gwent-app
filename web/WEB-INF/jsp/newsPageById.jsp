@@ -18,11 +18,11 @@
     <a href="/cards">Карты</a>
     <c:choose>
         <c:when test="${empty sessionScope.USER}">
-            <a href="/login">Вход</a>
+            <a href="/loginPage">Вход</a>
             <br />
         </c:when>
         <c:otherwise>
-            ${sessionScope.USER.name}<a href="/logout">(выйти)</a>
+            ${sessionScope.USER.name}<a href="/loginPage/logout">(выйти)</a>
             <br />
         </c:otherwise>
     </c:choose>

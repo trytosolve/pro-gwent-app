@@ -40,7 +40,7 @@ public class LoginController {
         return model;
     }
 
-    @RequestMapping(value = "/logoutPage", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ModelAndView logout(HttpSession httpSession) {
         httpSession.removeAttribute("user");
         return new ModelAndView("redirect:"+"/");
