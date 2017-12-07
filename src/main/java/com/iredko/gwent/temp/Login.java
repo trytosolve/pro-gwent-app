@@ -1,4 +1,4 @@
-package com.iredko.gwent.data;
+package com.iredko.gwent.temp;
 
 import com.iredko.gwent.models.User;
 
