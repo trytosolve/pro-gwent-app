@@ -19,7 +19,7 @@ public class UserRepository {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Cannot find com.mysql.jdbc.Driver",e);
         }
         try(Connection conn= DriverManager.getConnection(dbParams.getUrl(),dbParams.getUsername(),dbParams.getPassword())) {
             String sql = "select login,password,email,logintime " +
@@ -34,7 +34,7 @@ public class UserRepository {
                 user.setLastlogin(rs.getDate("logintime"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Cannot get account from database", e);
         }
         return user;
     }
@@ -43,7 +43,7 @@ public class UserRepository {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Cannot find com.mysql.jdbc.Driver",e);
         }
         try (Connection conn = DriverManager.getConnection(dbParams.getUrl(),dbParams.getUsername(),dbParams.getPassword())){
             String sql= "insert into webapp.users (login,password,email)" +
@@ -54,7 +54,7 @@ public class UserRepository {
             stmt.setString(3, email);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Cannot save create account in database", e);
         }
 
     }
