@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!-- Base Definition -->
+    <definition name="base-definition"
+                template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultHeader.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultMenu.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />
+    </definition>
+
+    <definition name="mainPage" extends="base-definition">
+        <put-attribute name="title" value="Main page" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/mainPage.jsp" />
+    </definition>
+
+    <definition name="newsPage" extends="base-definition">
+        <put-attribute name="title" value="News page" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/newsPage.jsp" />
+    </definition>
+
+    <definition name="newsPageById" extends="base-definition">
+        <put-attribute name="title" value="Article" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/newsPageById.jsp" />
+    </definition>
+
+    <definition name="loginPage" extends="base-definition">
+        <put-attribute name="title" value="Login page" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/loginPage.jsp" />
+    </definition>
+
+    <definition name="cardsPage" extends="base-definition">
+        <put-attribute name="title" value="Cards" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/cardsPage.jsp" />
+    </definition>
+
+    <definition name="patchesPage" extends="base-definition">
+        <put-attribute name="title" value="Patches" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/patchesPage.jsp" />
+    </definition>
+
+    <definition name="newAccountPage" extends="base-definition">
+        <put-attribute name="title" value="Registration page" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/newAccountPage.jsp" />
+    </definition>
+    <definition name="resultLoginPage" extends="base-definition">
+        <put-attribute name="title" value="Login result page" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/resultLoginPage.jsp" />
+    </definition>
+
+    <definition name="registrationResult" extends="base-definition">
+        <put-attribute name="title" value="Registration result page" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/registrationResult.jsp" />
+    </definition>
+
+
+
+</tiles-definitions>
