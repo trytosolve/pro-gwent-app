@@ -3,7 +3,6 @@ package com.iredko.gwent.controllers;
 import com.iredko.gwent.data.CreationAccountResult;
 import com.iredko.gwent.data.LoginResult;
 import com.iredko.gwent.data.SecurityManager;
-import com.iredko.gwent.data.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,6 +46,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/createAccountPage",method = RequestMethod.GET)
+    //TODO зачем тебе тут сессия?
     public ModelAndView getNewAccountPage(HttpSession httpSession, ModelAndView model) {
         model.setViewName("newAccountPage");
         return model;
