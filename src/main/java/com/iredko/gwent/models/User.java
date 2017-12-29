@@ -7,9 +7,12 @@ import java.sql.Date;
 @Component
 public class User {
 
-    private String  login;
+    private String login;
+
     private String password;
+
     private String email;
+
     private Date lastlogin;
 
     public String getLogin() {

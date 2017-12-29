@@ -46,8 +46,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/createAccountPage",method = RequestMethod.GET)
-    //TODO зачем тебе тут сессия?
-    public ModelAndView getNewAccountPage(HttpSession httpSession, ModelAndView model) {
+    public ModelAndView getNewAccountPage(ModelAndView model) {
         model.setViewName("newAccountPage");
         return model;
     }
