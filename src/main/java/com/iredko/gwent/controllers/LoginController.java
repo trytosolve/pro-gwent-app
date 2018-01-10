@@ -2,8 +2,13 @@ package com.iredko.gwent.controllers;
 
 import com.iredko.gwent.data.CreationAccountResult;
 import com.iredko.gwent.data.LoginResult;
+import com.iredko.gwent.data.RegistrationValidator;
 import com.iredko.gwent.data.SecurityManager;
+import com.iredko.gwent.models.RegistrationForm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,21 +50,43 @@ public class LoginController {
         return new ModelAndView("redirect:"+"/");
     }
 
+    @Autowired
+    private RegistrationValidator registrationValidator;
+
     @RequestMapping(value = "/createAccountPage",method = RequestMethod.GET)
-    public ModelAndView getNewAccountPage(ModelAndView model) {
+    public ModelAndView registration(ModelAndView model) {
+        RegistrationForm registrationForm = new RegistrationForm();
+        model.addObject("registrationForm", registrationForm);
         model.setViewName("newAccountPage");
         return model;
     }
 
-    @RequestMapping(path = "/createAccount", method = RequestMethod.POST)
-    public ModelAndView createAccount(ModelAndView model,HttpSession httpSession, @RequestParam("userid") String login,
-                                     @RequestParam("pwd") String pass,@RequestParam("email") String email) throws Exception {
-        CreationAccountResult creationAccountResult = securityManager.createAccount(login,email,pass);
-        if (creationAccountResult == CreationAccountResult.REGITRATION_OK) {
-            httpSession.setAttribute("user", login);
+    @RequestMapping(value = "/createAccountPage",method = RequestMethod.POST)
+    public ModelAndView processRegistration(ModelAndView model,RegistrationForm registrationForm, BindingResult result) {
+        registrationValidator.validate(registrationForm, result);
+        model.setViewName("newAccountPage");
+        if (result.hasErrors()) {
+            return model;
         }
-        model.addObject("result", creationAccountResult);
-        model.setViewName("registrationResult");
-        return model;
+        return new ModelAndView("redirect:"+"/");
     }
+
+
+//    @RequestMapping(value = "/createAccountPage",method = RequestMethod.GET)
+//    public ModelAndView getNewAccountPage(ModelAndView model) {
+//        model.setViewName("newAccountPage");
+//        return model;
+//    }
+
+//    @RequestMapping(path = "/createAccount", method = RequestMethod.POST)
+//    public ModelAndView createAccount(ModelAndView model,HttpSession httpSession, @RequestParam("userid") String login,
+//                                     @RequestParam("pwd") String pass,@RequestParam("email") String email) throws Exception {
+//        CreationAccountResult creationAccountResult = securityManager.createAccount(login,email,pass);
+//        if (creationAccountResult == CreationAccountResult.REGITRATION_OK) {
+//            httpSession.setAttribute("user", login);
+//        }
+//        model.addObject("result", creationAccountResult);
+//        model.setViewName("registrationResult");
+//        return model;
+//    }
 }

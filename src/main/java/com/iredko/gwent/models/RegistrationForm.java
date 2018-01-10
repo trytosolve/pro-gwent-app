@@ -1,45 +1,46 @@
 package com.iredko.gwent.models;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
+public class RegistrationForm {
 
-import javax.validation.constraints.Size;
+    String userLogin;
 
-public class RegistrationForm{
+    String userEmail;
 
-        @Size(min = 4,max = 15)
-        @NotEmpty
-        String userLogin;
+    String userPassword;
 
-        @Size(min = 8,max = 15)
-        @NotEmpty
-        String userPassword;
+    String confirmPassword;
 
-        @Email
-        @NotEmpty
-        String userEmail;
 
-        public String getUserLogin() {
-                return userLogin;
-        }
+    public String getUserLogin() {
+        return userLogin;
+    }
 
-        public void setUserLogin(String userLogin) {
-                this.userLogin = userLogin;
-        }
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
+    }
 
-        public String getUserPassword() {
-                return userPassword;
-        }
+    public String getUserPassword() {
+        return userPassword;
+    }
 
-        public void setUserPassword(String userPassword) {
-                this.userPassword = userPassword;
-        }
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
 
-        public String getUserEmail() {
-                return userEmail;
-        }
+    public String getUserEmail() {
+        return userEmail;
+    }
 
-        public void setUserEmail(String userEmail) {
-                this.userEmail = userEmail;
-        }
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 }
+
