@@ -18,6 +18,7 @@
 <body>
 <header id="header">
     <tiles:insertAttribute name="header" />
+    <tiles:insertAttribute name="login" />
 </header>
 
 <section id="sidemenu">

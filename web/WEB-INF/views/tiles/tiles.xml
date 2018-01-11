@@ -7,6 +7,7 @@
     <definition name="base-definition"
                 template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">
         <put-attribute name="title" value="" />
+        <put-attribute name="login" value="/WEB-INF/views/tiles/template/defaultLogin.jsp" />
         <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultHeader.jsp" />
         <put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultMenu.jsp" />
         <put-attribute name="body" value="" />
