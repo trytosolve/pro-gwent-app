@@ -53,6 +53,7 @@ public class UserRepository {
             stmt.setString(2,password);
             stmt.setString(3, email);
             stmt.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             throw new RuntimeException("Cannot save create account in database", e);
         }
