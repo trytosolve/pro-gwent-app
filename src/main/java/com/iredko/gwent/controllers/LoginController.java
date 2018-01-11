@@ -1,13 +1,11 @@
 package com.iredko.gwent.controllers;
 
-import com.iredko.gwent.data.CreationAccountResult;
 import com.iredko.gwent.data.LoginResult;
 import com.iredko.gwent.data.RegistrationValidator;
 import com.iredko.gwent.data.SecurityManager;
 import com.iredko.gwent.models.RegistrationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
