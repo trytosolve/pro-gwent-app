@@ -1,29 +1,21 @@
-<form action="${pageContext.request.contextPath}/loginPage/login" method="post">
-    <table width="20%" align="center">
-        <tr>
-            <td colspan=2 style="text-align: center;"><span
-                    style="font-size: medium; "><b>Pro-Gwent Login Page</b></span>
-            </td>
-        </tr>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<form:form action="${pageContext.request.contextPath}/loginPage" commandName="loginForm" method="post">
+    <table align="center">
         <tr>
             <td>Username:</td>
-            <td><input type="text" size=25 name="login"></td>
+            <td><form:input path="userLogin" /></td>
+            <td><span class="error"><form:errors path="userLogin" /></span></td>
         </tr>
 
         <tr>
             <td>Password:</td>
-            <td><input type="Password" size=25 name="pwd"></td>
+            <td><form:password path="userPassword" /></td>
+            <td><span class="error"><form:errors path="userPassword" /></span></td>
         </tr>
 
         <tr>
-            <td><input type="Reset" onclick="a" value="Reset"></td>
-            <td><input type="submit" value="Login"></td>
-
-        </tr>
-        <tr>
-            <td></td>
-            <td><b><a href="/loginPage/createAccountPage">New account</a></b></td>
+            <td colspan="3"><input type="submit" value="Submit" /></td>
         </tr>
     </table>
-</form>
+</form:form>

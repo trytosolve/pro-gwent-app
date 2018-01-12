@@ -1,9 +1,15 @@
 package com.iredko.gwent.models;
 
-public class LogginForm {
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Size;
+
+public class LoginForm {
+    @Size(min=2,max=16)
     String userLogin;
 
+    @NotEmpty
     String userPassword;
 
     public String getUserLogin() {
