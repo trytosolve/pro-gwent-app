@@ -4,6 +4,7 @@ import com.iredko.gwent.data.RegistrationValidator;
 import com.iredko.gwent.data.SecurityManager;
 import com.iredko.gwent.models.LoginForm;
 import com.iredko.gwent.models.RegistrationForm;
+import com.iredko.gwent.temp.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -47,9 +48,6 @@ public class LoginController {
         return new ModelAndView("redirect:" + "/");
     }
 
-    @Autowired
-    RegistrationValidator registrationValidator;
-
     @RequestMapping(value = "/createAccountPage", method = RequestMethod.GET)
     public ModelAndView showRegistrationPage(ModelAndView model, RegistrationForm registrationForm) {
         model.addObject("registrationForm", registrationForm);
@@ -58,7 +56,8 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/createAccountPage", method = RequestMethod.POST)
-    public ModelAndView processRegistration(ModelAndView model, RegistrationForm registrationForm, BindingResult result) {
+    public ModelAndView processRegistration(RegistrationValidator registrationValidator, ModelAndView model,
+                                            RegistrationForm registrationForm, BindingResult result) {
         registrationValidator.validate(registrationForm, result);
         if (result.hasErrors()) {
             model.setViewName("newAccountPage");

@@ -1,13 +1,12 @@
 package com.iredko.gwent.models;
 
-
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class LoginForm {
-    @Size(min=2,max=16)
+    @NotNull @Size(min=2,max=16)
     String userLogin;
 
     @NotEmpty
