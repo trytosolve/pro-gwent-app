@@ -2,6 +2,7 @@ package com.iredko.gwent.models;
 
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Size;
 

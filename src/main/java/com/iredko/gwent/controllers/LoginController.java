@@ -1,6 +1,5 @@
 package com.iredko.gwent.controllers;
 
-import com.iredko.gwent.data.LoginResult;
 import com.iredko.gwent.data.RegistrationValidator;
 import com.iredko.gwent.data.SecurityManager;
 import com.iredko.gwent.models.LoginForm;
@@ -11,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -35,7 +33,7 @@ public class LoginController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView showLoginResult(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, ModelAndView model) {
+    public ModelAndView showLoginResult(@Valid LoginForm loginForm, BindingResult result, ModelAndView model) {
         if (result.hasErrors()) {
             model.setViewName("loginPage");
             return model;
@@ -53,7 +51,7 @@ public class LoginController {
     RegistrationValidator registrationValidator;
 
     @RequestMapping(value = "/createAccountPage", method = RequestMethod.GET)
-    public ModelAndView registration(ModelAndView model, RegistrationForm registrationForm) {
+    public ModelAndView showRegistrationPage(ModelAndView model, RegistrationForm registrationForm) {
         model.addObject("registrationForm", registrationForm);
         model.setViewName("newAccountPage");
         return model;

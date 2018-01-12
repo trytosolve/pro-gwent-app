@@ -16,30 +16,22 @@ public class SecurityManager {
         this.userRepository = userRepository;
     }
 
-    public LoginResult login(String login, String pass) throws Exception {
-        User user = userRepository.getUserByLogin(login);
-        if (user.getLogin()==null) {
-            return LoginResult.NO_SUCH_USER;
-        } else if (user.getPassword().equals(pass)) {
-            return LoginResult.LOGIN_OK;
-        } else {
-            return LoginResult.WRONG_PASSWORD;
-        }
-    }
-
-    public CreationAccountResult createAccount(String login,String email,String password) throws Exception {
-        User user = userRepository.getUserByLogin(login);
-        if (user.getLogin() != null) {
-            return CreationAccountResult.LOGIN_IN_USE;
-        } else if (login==null || login.length()<5 || login.length()>20) {
-            return CreationAccountResult.INCORECT_LOGIN;
-        } else if (email == null) {
-            return CreationAccountResult.INCORECT_EMAIL;
-        } else if (password == null || password.length() < 5) {
-            return CreationAccountResult.INCORECT_PASSWORD;
-        } else {
-            userRepository.addUserToRepository(login,email,password);
-            return CreationAccountResult.REGITRATION_OK;
-        }
-    }
+//    public String checkUserIN(String login, String pass) throws Exception {
+//        User user = userRepository.getUserByLogin(login);
+//        if (user.getLogin()==null) {
+//            return false;
+//        } else {
+//            return LoginResult.WRONG_PASSWORD;
+//        }
+//    }
+//
+//    public CreationAccountResult createAccount(String login,String email,String password) throws Exception {
+//        User user = userRepository.getUserByLogin(login);
+//        if (user.getLogin() != null) {
+//            return CreationAccountResult.LOGIN_IN_USE;
+//        } else {
+//            userRepository.addUserToRepository(login,email,password);
+//            return CreationAccountResult.REGITRATION_OK;
+//        }
+//    }
 }
