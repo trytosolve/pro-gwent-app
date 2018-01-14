@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<form:form action="${pageContext.request.contextPath}/loginPage" commandName="loginForm" method="post">
+<form:form action="${pageContext.request.contextPath}/loginPage" modelAttribute="loginForm" method="post">
     <table align="center">
         <tr>
             <td>Username:</td>

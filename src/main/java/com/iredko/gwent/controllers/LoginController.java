@@ -4,8 +4,6 @@ import com.iredko.gwent.data.RegistrationValidator;
 import com.iredko.gwent.data.SecurityManager;
 import com.iredko.gwent.models.LoginForm;
 import com.iredko.gwent.models.RegistrationForm;
-import com.iredko.gwent.temp.Login;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,7 +32,7 @@ public class LoginController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView showLoginResult(@Valid LoginForm loginForm, BindingResult result, ModelAndView model) {
+    public ModelAndView showLoginResult(@ModelAttribute("loginForm") @Valid LoginForm loginForm, BindingResult result, ModelAndView model) {
         if (result.hasErrors()) {
             model.setViewName("loginPage");
             return model;
