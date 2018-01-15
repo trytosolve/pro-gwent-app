@@ -39,7 +39,7 @@ public class UserRepository {
         return user;
     }
 
-    public void addUserToRepository(String login,String email,String password) {
+    public void addUserToRepository(String login,String password,String email) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -53,9 +53,8 @@ public class UserRepository {
             stmt.setString(2,password);
             stmt.setString(3, email);
             stmt.executeUpdate();
-            conn.commit();
         } catch (SQLException e) {
-            throw new RuntimeException("Cannot save create account in database", e);
+            throw new RuntimeException("Cannot create account in database", e);
         }
 
     }

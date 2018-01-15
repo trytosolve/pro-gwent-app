@@ -32,10 +32,25 @@ public class LoginController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView showLoginResult(@ModelAttribute("loginForm") @Valid LoginForm loginForm, BindingResult result, ModelAndView model) {
+    public ModelAndView showLoginResult(@ModelAttribute("loginForm") @Valid LoginForm loginForm, BindingResult result,
+                                        ModelAndView model,HttpSession session) {
         if (result.hasErrors()) {
             model.setViewName("loginPage");
             return model;
+        }
+        if (!result.hasErrors()) {
+            if(!securityManager.userExists(loginForm.getUserLogin())) {
+                result.rejectValue("userLogin", "userLogin.exists", "User does not exist!");
+                model.setViewName("loginPage");
+                return model;
+            }
+            if (!securityManager.checkUserPassword(loginForm.getUserLogin(),loginForm.getUserPassword())) {
+                result.rejectValue("userPassword", "userPassword.check", "Wrong password!");
+                model.setViewName("loginPage");
+                return model;
+            }
+            session.setAttribute("user",loginForm.getUserLogin());
+            return new ModelAndView("redirect:" + "/");
         }
         return new ModelAndView("redirect:" + "/");
     }
@@ -54,12 +69,23 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/createAccountPage", method = RequestMethod.POST)
-    public ModelAndView processRegistration(RegistrationValidator registrationValidator, ModelAndView model,
-                                            RegistrationForm registrationForm, BindingResult result) {
+    public ModelAndView showRegistrationResult(RegistrationValidator registrationValidator, ModelAndView model,
+                                            RegistrationForm registrationForm, BindingResult result,HttpSession session) {
         registrationValidator.validate(registrationForm, result);
         if (result.hasErrors()) {
             model.setViewName("newAccountPage");
             return model;
+        }
+        if (!result.hasErrors()) {
+            if(securityManager.userExists(registrationForm.getUserLogin())) {
+                result.rejectValue("userLogin", "userLogin.exists", "Login already in use!");
+                model.setViewName("newAccountPage");
+                return model;
+            }
+            securityManager.addUserToBD(registrationForm.getUserLogin(),registrationForm.getUserPassword()
+                    ,registrationForm.getUserEmail());
+            session.setAttribute("user",registrationForm.getUserLogin());
+            return new ModelAndView("redirect:" + "/");
         }
         return new ModelAndView("redirect:" + "/");
     }

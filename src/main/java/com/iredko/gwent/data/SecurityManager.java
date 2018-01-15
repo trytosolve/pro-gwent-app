@@ -1,5 +1,7 @@
 package com.iredko.gwent.data;
 
+import com.iredko.gwent.models.LoginForm;
+import com.iredko.gwent.models.RegistrationForm;
 import com.iredko.gwent.models.User;
 import org.springframework.stereotype.Component;
 
@@ -16,22 +18,28 @@ public class SecurityManager {
         this.userRepository = userRepository;
     }
 
-//    public String checkUserIN(String login, String pass) throws Exception {
-//        User user = userRepository.getUserByLogin(login);
-//        if (user.getLogin()==null) {
-//            return false;
-//        } else {
-//            return LoginResult.WRONG_PASSWORD;
-//        }
-//    }
-//
-//    public CreationAccountResult createAccount(String login,String email,String password) throws Exception {
-//        User user = userRepository.getUserByLogin(login);
-//        if (user.getLogin() != null) {
-//            return CreationAccountResult.LOGIN_IN_USE;
-//        } else {
-//            userRepository.addUserToRepository(login,email,password);
-//            return CreationAccountResult.REGITRATION_OK;
-//        }
-//    }
+    public boolean userExists(String userLogin) {
+        User user = userRepository.getUserByLogin(userLogin);
+        if (user.getLogin() == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean checkUserPassword(String userLogin,String userPassword){
+        User user = userRepository.getUserByLogin(userLogin);
+        if (!user.getPassword().equals(userPassword)) {
+            return false;
+        }
+        return true;
+    }
+
+    public void addUserToBD(String userLogin,String userPassword,String userEmail) {
+        userRepository.addUserToRepository(userLogin,userEmail,userPassword);
+    }
+
+    public User getUserFromBD(String userLogin) {
+       return userRepository.getUserByLogin(userLogin);
+    }
 }

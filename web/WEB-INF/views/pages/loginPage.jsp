@@ -2,6 +2,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <form:form action="${pageContext.request.contextPath}/loginPage" modelAttribute="loginForm" method="post">
     <table align="center">
+
+        <tr>
+                ${securityResult}
+        </tr>
+
         <tr>
             <td>Username:</td>
             <td><form:input path="userLogin"/></td>
