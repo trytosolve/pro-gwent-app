@@ -49,7 +49,7 @@ public class LoginController {
                 model.setViewName("loginPage");
                 return model;
             }
-            session.setAttribute("user",loginForm.getUserLogin());
+            session.setAttribute("user",securityManager.getUserFromBD(loginForm.getUserLogin()));
             return new ModelAndView("redirect:" + "/");
         }
         return new ModelAndView("redirect:" + "/");
@@ -84,7 +84,7 @@ public class LoginController {
             }
             securityManager.addUserToBD(registrationForm.getUserLogin(),registrationForm.getUserPassword()
                     ,registrationForm.getUserEmail());
-            session.setAttribute("user",registrationForm.getUserLogin());
+            session.setAttribute("user",securityManager.getUserFromBD(registrationForm.getUserLogin()));
             return new ModelAndView("redirect:" + "/");
         }
         return new ModelAndView("redirect:" + "/");
