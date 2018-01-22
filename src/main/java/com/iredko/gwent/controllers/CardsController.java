@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(path = "/cards")
 public class CardsController {
-    CardRepository cardRepository;
+    CardRepository cardRepository; //TODO private final. Ты его не хочешь никому показывать + оно не должно меняться в процессе работы. Верно?
 
     public CardsController(CardRepository cardRepository) {
         this.cardRepository = cardRepository;
