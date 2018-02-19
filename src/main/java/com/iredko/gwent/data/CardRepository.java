@@ -1,5 +1,6 @@
 package com.iredko.gwent.data;
 
+import com.iredko.gwent.models.SearchForm;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -14,18 +15,24 @@ public class CardRepository {
         this.dbParams = dbParams;
     }
 
-    public List<Card> getCardList(){
+    public List<Card> getCardList(SearchFilter searchFilter) {
         List<Card> cardList = new ArrayList<>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Cannot find com.mysql.jdbc.Driver",e);
+            throw new RuntimeException("Cannot find com.mysql.jdbc.Driver", e);
         }
-        try(Connection conn= DriverManager.getConnection(dbParams.getUrl(),dbParams.getUsername(),dbParams.getPassword())) {
+        try (Connection conn = DriverManager.getConnection(dbParams.getUrl(), dbParams.getUsername(), dbParams.getPassword())) {
             String sql = "select name,type,faction,description,url " +
-                    "from webapp.cards";
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+                    "from webapp.cards where name LIKE(?) or type LIKE(?) " +
+                    "or faction LIKE(?) or description LIKE(?) ";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "%"+ searchFilter.getSearchParam()+"%");
+            stmt.setString(2, "%"+ searchFilter.getSearchParam()+"%");
+            stmt.setString(3, "%"+ searchFilter.getSearchParam()+"%");
+            stmt.setString(4, "%"+ searchFilter.getSearchParam()+"%");
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Card card = new Card();
                 card.setName(rs.getString("name"));
