@@ -5,7 +5,7 @@
     <table align="center">
 
         <tr>
-                ${securityResult}
+                ${securityResult} <!-- TODO не вижу чтобы это где-то заполнялось в контроллере -->
         </tr>
 
         <tr>

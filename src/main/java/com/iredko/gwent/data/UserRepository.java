@@ -16,6 +16,7 @@ public class UserRepository {
 
     public User getUserByLogin(String login) {
         User user = new User();
+        //TODO этот кусок кода у тебя повторяется 2 раза точь-в-точь. Что если вырезать его в отдельный метод loadDriver()? :)
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {

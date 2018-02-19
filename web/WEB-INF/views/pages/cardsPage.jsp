@@ -27,7 +27,7 @@
             </td>
             <td>
                 <ul>
-                    <li>NAME: ${cards.name}</li>
+                    <li>NAME: ${cards.name}</li> <!-- TODO все таки елемент это card а не cards -->
                     <li>TYPE: ${cards.type}</li>
                     <li>FACTION: ${cards.faction}</li>
                     <li>DESCRIPTION ${cards.discription}</li>
