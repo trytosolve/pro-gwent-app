@@ -3,6 +3,7 @@ package com.iredko.gwent.data;
 import com.iredko.gwent.models.SearchForm;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.Null;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +25,25 @@ public class CardRepository {
         }
         try (Connection conn = DriverManager.getConnection(dbParams.getUrl(), dbParams.getUsername(), dbParams.getPassword())) {
             String sql = "select name,type,faction,description,url " +
-                    "from webapp.cards where name LIKE(?) or type LIKE(?) " +
-                    "or faction LIKE(?) or description LIKE(?) ";
+                    "from webapp.cards where (name LIKE ? or type LIKE ? " +
+                    "or faction LIKE ? or description LIKE ?)";
+            if (searchFilter.getCardTypeSet() != null) {
+                if (searchFilter.getCardTypeSet().size() != 0) {
+                    sql = sql + " and type in(" + searchFilter.cardTypeToString() + ")";
+                }
+            }
+            if (searchFilter.getCardFactionSet() != null) {
+                if (searchFilter.getCardFactionSet().size() != 0) {
+                    sql = sql + " and faction in(" + searchFilter.cardFactionToString() + ")";
+                }
+            }
 
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "%"+ searchFilter.getSearchParam()+"%");
-            stmt.setString(2, "%"+ searchFilter.getSearchParam()+"%");
-            stmt.setString(3, "%"+ searchFilter.getSearchParam()+"%");
-            stmt.setString(4, "%"+ searchFilter.getSearchParam()+"%");
+            stmt.setString(1, "%" + searchFilter.getSearchParam() + "%");
+            stmt.setString(2, "%" + searchFilter.getSearchParam() + "%");
+            stmt.setString(3, "%" + searchFilter.getSearchParam() + "%");
+            stmt.setString(4, "%" + searchFilter.getSearchParam() + "%");
+
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Card card = new Card();

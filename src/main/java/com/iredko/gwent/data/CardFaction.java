@@ -5,9 +5,14 @@ public enum CardFaction {
     NEUTRAL("Neutral"), NORTHEN_REALMS("Northen_Realms"),SCOIATAEL("Scoiatael"), MONSTERS("Monsters"),
     SKELIGE("Skelige"), NILFGAARD("Nilfgaard");
 
-    final String description;
+    public String getDescription() {
+        return description;
+    }
+
+    private final String description;
 
     CardFaction(String desc) {
         this.description = desc;
     }
+
 }
