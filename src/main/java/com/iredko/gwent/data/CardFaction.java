@@ -2,8 +2,8 @@ package com.iredko.gwent.data;
 
 public enum CardFaction {
 
-    NEUTRAL("Neutral"), NORTHEN_REALMS("Northen_Realms"),SCOIATAEL("Scoiatael"), MONSTERS("Monsters"),
-    SKELIGE("Skelige"), NILFGAARD("Nilfgaard");
+    NEUTRAL("Neutral"), NORTHEN_REALMS("Northen_Realms"),SCOIATAEL("Scoia\\'tael"), MONSTERS("Monsters"),
+    SKELIGE("Skellige"), NILFGAARD("Nilfgaard");
 
     public String getDescription() {
         return description;
