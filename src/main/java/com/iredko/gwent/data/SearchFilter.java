@@ -1,10 +1,5 @@
 package com.iredko.gwent.data;
 
-import org.springframework.stereotype.Component;
-
-import javax.smartcardio.Card;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 

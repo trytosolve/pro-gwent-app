@@ -44,12 +44,12 @@ public class LoginController {
                 model.setViewName("loginPage");
                 return model;
             }
-            if (!securityManager.checkUserPassword(loginForm.getUserLogin(),loginForm.getUserPassword())) {
+            if (!securityManager.passwordIsCorrect(loginForm.getUserLogin(),loginForm.getUserPassword())) {
                 result.rejectValue("userPassword", "userPassword.check", "Wrong password!");
                 model.setViewName("loginPage");
                 return model;
             }
-            session.setAttribute("user",securityManager.getUserFromBD(loginForm.getUserLogin()));
+            session.setAttribute("user",securityManager.findUser(loginForm.getUserLogin()));
             return new ModelAndView("redirect:" + "/");
         }
         return new ModelAndView("redirect:" + "/");
@@ -82,9 +82,9 @@ public class LoginController {
                 model.setViewName("newAccountPage");
                 return model;
             }
-            securityManager.addUserToBD(registrationForm.getUserLogin(),registrationForm.getUserPassword()
+            securityManager.saveUser(registrationForm.getUserLogin(),registrationForm.getUserPassword()
                     ,registrationForm.getUserEmail());
-            session.setAttribute("user",securityManager.getUserFromBD(registrationForm.getUserLogin()));
+            session.setAttribute("user",securityManager.findUser(registrationForm.getUserLogin()));
             return new ModelAndView("redirect:" + "/");
         }
         return new ModelAndView("redirect:" + "/");

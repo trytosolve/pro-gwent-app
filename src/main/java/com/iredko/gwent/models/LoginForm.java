@@ -6,10 +6,10 @@ import javax.validation.constraints.Size;
 
 public class LoginForm {
     @Size(min=2,max=16)
-    String userLogin; //TODO private. Ты по идее не хочешь чтобы кто-либо его менял не через сеттер
+    private String userLogin;
 
     @NotEmpty
-    String userPassword; //TODO private. Ты по идее не хочешь чтобы кто-либо его менял не через сеттер
+    private String userPassword;
 
     public String getUserLogin() {
         return userLogin;

@@ -4,10 +4,6 @@
     <table align="center">
 
         <tr>
-                ${securityResult} <!-- TODO не вижу чтобы это где-то заполнялось в контроллере -->
-        </tr>
-
-        <tr>
             <td>Username:</td>
             <td><form:input path="userLogin"/></td>
             <td><span class="error"><form:errors path="userLogin"/></span></td>

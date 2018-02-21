@@ -44,20 +44,4 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/patchesPage.jsp" />
     </definition>
 
-    <definition name="newAccountPage" extends="base-definition">
-        <put-attribute name="title" value="Registration page" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/newAccountPage.jsp" />
-    </definition>
-    <definition name="resultLoginPage" extends="base-definition">
-        <put-attribute name="title" value="Login result page" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/resultLoginPage.jsp" /> <!-- TODO страницы не существует -->
-    </definition>
-
-    <definition name="registrationResult" extends="base-definition">
-        <put-attribute name="title" value="Registration result page" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/registrationResult.jsp" /> <!-- TODO страницы не существует -->
-    </definition>
-
-
-
 </tiles-definitions>
