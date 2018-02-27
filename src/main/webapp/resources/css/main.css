@@ -28,7 +28,7 @@
 .login {
     float: right;
     margin-right: 10px;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .log_item {
@@ -36,16 +36,14 @@
     border: 0px;
     border-bottom: 1px solid;
     font-size: 12px;
-    padding: 3px 0px;
     width: 80px;
+
 }
 
 .act {
     font-size: 12px;
     font-weight: 700;
     border-radius: 5px;
-
-    margin: 10px auto;
     border: 1px solid;
     background: transparent;
 }
@@ -57,7 +55,6 @@ body{
 
 .heading {
     background: #708090;
-    height:50px;
 }
 
 .error {

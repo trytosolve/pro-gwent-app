@@ -1,6 +1,7 @@
 package com.iredko.gwent.controllers;
 
 import com.iredko.gwent.data.NewsList;
+import com.iredko.gwent.models.LoginForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ public class NewsController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getMain(ModelAndView model) throws IOException {
+    public ModelAndView getMain(ModelAndView model, LoginForm loginForm) throws IOException {
         model.addObject("newsList", newsList.getAll());
         model.setViewName("newsPage");
         return model;
