@@ -37,7 +37,8 @@
     border-bottom: 1px solid;
     font-size: 12px;
     width: 80px;
-
+    color: black;
+    margin-right: 5px;
 }
 
 .act {
