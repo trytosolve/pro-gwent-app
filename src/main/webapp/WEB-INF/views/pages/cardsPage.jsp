@@ -2,27 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-
-<%--<form:form action="${pageContext.request.contextPath}/cards" modelAttribute="searchForm" method="post">--%>
-
-<%--<table>--%>
-<%--<c:forEach items="${cardList}" var="card">--%>
-<%--<tr>--%>
-<%--<td>--%>
-<%--<img src="${card.url}" alt="">--%>
-<%--</td>--%>
-<%--<td>--%>
-<%--<ul>--%>
-<%--<li>NAME: ${card.name}</li>--%>
-<%--<li>TYPE: ${card.type}</li>--%>
-<%--<li>FACTION: ${card.faction}</li>--%>
-<%--<li>DESCRIPTION ${card.discription}</li>--%>
-<%--</ul>--%>
-<%--</td>--%>
-<%--</tr>--%>
-<%--</c:forEach>--%>
-<%--</table>--%>
-
 <div id="card_db">
     <div class="container">
         <div class="row">

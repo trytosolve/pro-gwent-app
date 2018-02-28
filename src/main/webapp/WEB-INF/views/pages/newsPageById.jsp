@@ -1,1 +1,1 @@
-<div class="center">${text}</div>
+<div class="center full_size">${text}</div>

@@ -291,8 +291,10 @@ footer {
 }
 
 #site-content {
-    background: url("/resources/img/main.jpg");
-    height: 100vh;
+    background: white url("/resources/img/main.jpg") fixed;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-attachment: fixed;
 }
 
 .main_section {
@@ -354,4 +356,8 @@ footer {
     border-radius: 3px;
     background: #f2f2f2;
     opacity: 0.85;
+}
+
+.full_size {
+    height: 91vh;
 }

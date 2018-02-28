@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
-<div id="create_acc">
+<div id="create_acc" class="full_size">
     <div class="container">
         <div class="sing_form">
             <form:form action="${pageContext.request.contextPath}/loginPage/createAccountPage"
