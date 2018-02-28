@@ -34,9 +34,17 @@
         </div>
         <div class="col-md-2">
             <div class="sing f14px">
-                <a href="/loginPage">Sign in</a>
-                <span>or</span>
-                <a href="/loginPage/createAccountPage">Sign up</a>
+                <c:choose>
+                    <c:when test="${empty sessionScope.user.login}">
+                        <a href="/loginPage">Sign in</a>
+                        <span>or</span>
+                        <a href="/loginPage/createAccountPage">Sign up</a>
+                    </c:when>
+                    <c:otherwise>
+                        <span class="bold f15px">${sessionScope.user.login}:</span>
+                        <a href="/loginPage/logout">logout</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
