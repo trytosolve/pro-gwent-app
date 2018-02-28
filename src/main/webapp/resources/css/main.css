@@ -1,5 +1,5 @@
 .clearfix:after {
-    content:'';
+    content: '';
     display: table;
     width: 100%;
 }
@@ -20,99 +20,297 @@
     font-weight: 700;
 }
 
+header {
+    background: #24292E;
+    margin-bottom: 20px;
+}
+
 .logo {
     float: left;
     padding: 5px;
+    color: #FFFFFF;
 }
 
-.login {
+nav {
+    float: left;
+}
+
+.menu {
+    padding: 0;
+    margin: 12px 0 0;
+}
+
+.menu li {
+    float: left;
+    display: block;
+    margin: 0 10px 0 auto;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.search_container {
     float: right;
-    margin-right: 10px;
-    margin-top: 10px;
-}
-
-.log_item {
-    background: transparent;
-    border: 0px;
-    border-bottom: 1px solid;
-    font-size: 12px;
-    width: 80px;
-    color: black;
+    margin-top: 12px;
     margin-right: 5px;
 }
 
-.act {
+.search {
+    background: #a8a6aa;
+    border: 1px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.sing {
+    padding: 0;
+    margin: 12px 0 0;
+}
+
+.sing span {
+    color: dimgrey;
+}
+
+.sing a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer {
+    margin-top: 20px;
+    background: #f2f2f2;
+    height: 40px;
+}
+
+.signature {
+    padding-top: 10px;
+    color: #A7A7A7;
+}
+
+/*.login {*/
+/*float: right;*/
+/*margin-right: 10px;*/
+/*margin-top: 10px;*/
+/*}*/
+
+/*.log_item {*/
+/*background: transparent;*/
+/*border: 0px;*/
+/*border-bottom: 1px solid;*/
+/*font-size: 12px;*/
+/*width: 80px;*/
+/*color: black;*/
+/*margin-right: 5px;*/
+/*}*/
+
+/*.act {*/
+/*font-size: 12px;*/
+/*font-weight: 700;*/
+/*border-radius: 5px;*/
+/*border: 1px solid;*/
+/*background: transparent;*/
+/*}*/
+
+.f11px {
+    font-size: 11px;
+}
+
+.f12px {
     font-size: 12px;
-    font-weight: 700;
-    border-radius: 5px;
-    border: 1px solid;
-    background: transparent;
 }
 
-body{
-    padding: 0px;
-    margin: 0px;
+.f13px {
+    font-size: 13px;
 }
 
-.heading {
-    background: #708090;
+.f14px {
+    font-size: 14px;
 }
 
-.error {
-    color: #8e1113;
-    font-weight: 700;
+.f15px {
+    font-size: 15px;
 }
 
+.f16px {
+    font-size: 16px;
+}
 
-.f11px {font-size: 11px;}
-.f12px {font-size: 12px;}
-.f13px {font-size: 13px;}
-.f14px {font-size: 14px;}
-.f15px {font-size: 15px;}
-.f16px {font-size: 16px;}
-.f17px {font-size: 17px;}
-.f18px {font-size: 18px;}
-.f19px {font-size: 19px;}
-.f20px {font-size: 20px;}
-.f21px {font-size: 21px;}
-.f22px {font-size: 22px;}
-.f23px {font-size: 23px;}
-.f24px {font-size: 24px;}
-.f25px {font-size: 25px;}
-.f26px {font-size: 26px;}
-.f27px {font-size: 27px;}
-.f28px {font-size: 28px;}
-.f29px {font-size: 29px;}
-.f30px {font-size: 30px;}
-.f31px {font-size: 31px;}
-.f32px {font-size: 32px;}
-.f33px {font-size: 33px;}
-.f34px {font-size: 34px;}
-.f35px {font-size: 35px;}
-.f36px {font-size: 36px;}
-.f37px {font-size: 37px;}
-.f38px {font-size: 38px;}
-.f39px {font-size: 39px;}
-.f40px {font-size: 40px;}
-.f41px {font-size: 41px;}
-.f42px {font-size: 42px;}
-.f43px {font-size: 43px;}
-.f44px {font-size: 44px;}
-.f45px {font-size: 45px;}
-.f46px {font-size: 46px;}
-.f47px {font-size: 47px;}
-.f48px {font-size: 48px;}
-.f49px {font-size: 49px;}
-.f50px {font-size: 50px;}
-.f51px {font-size: 51px;}
-.f52px {font-size: 52px;}
-.f53px {font-size: 53px;}
-.f54px {font-size: 54px;}
-.f55px {font-size: 55px;}
-.f56px {font-size: 56px;}
-.f57px {font-size: 57px;}
-.f58px {font-size: 58px;}
-.f59px {font-size: 59px;}
+.f17px {
+    font-size: 17px;
+}
+
+.f18px {
+    font-size: 18px;
+}
+
+.f19px {
+    font-size: 19px;
+}
+
+.f20px {
+    font-size: 20px;
+}
+
+.f21px {
+    font-size: 21px;
+}
+
+.f22px {
+    font-size: 22px;
+}
+
+.f23px {
+    font-size: 23px;
+}
+
+.f24px {
+    font-size: 24px;
+}
+
+.f25px {
+    font-size: 25px;
+}
+
+.f26px {
+    font-size: 26px;
+}
+
+.f27px {
+    font-size: 27px;
+}
+
+.f28px {
+    font-size: 28px;
+}
+
+.f29px {
+    font-size: 29px;
+}
+
+.f30px {
+    font-size: 30px;
+}
+
+.f31px {
+    font-size: 31px;
+}
+
+.f32px {
+    font-size: 32px;
+}
+
+.f33px {
+    font-size: 33px;
+}
+
+.f34px {
+    font-size: 34px;
+}
+
+.f35px {
+    font-size: 35px;
+}
+
+.f36px {
+    font-size: 36px;
+}
+
+.f37px {
+    font-size: 37px;
+}
+
+.f38px {
+    font-size: 38px;
+}
+
+.f39px {
+    font-size: 39px;
+}
+
+.f40px {
+    font-size: 40px;
+}
+
+.f41px {
+    font-size: 41px;
+}
+
+.f42px {
+    font-size: 42px;
+}
+
+.f43px {
+    font-size: 43px;
+}
+
+.f44px {
+    font-size: 44px;
+}
+
+.f45px {
+    font-size: 45px;
+}
+
+.f46px {
+    font-size: 46px;
+}
+
+.f47px {
+    font-size: 47px;
+}
+
+.f48px {
+    font-size: 48px;
+}
+
+.f49px {
+    font-size: 49px;
+}
+
+.f50px {
+    font-size: 50px;
+}
+
+.f51px {
+    font-size: 51px;
+}
+
+.f52px {
+    font-size: 52px;
+}
+
+.f53px {
+    font-size: 53px;
+}
+
+.f54px {
+    font-size: 54px;
+}
+
+.f55px {
+    font-size: 55px;
+}
+
+.f56px {
+    font-size: 56px;
+}
+
+.f57px {
+    font-size: 57px;
+}
+
+.f58px {
+    font-size: 58px;
+}
+
+.f59px {
+    font-size: 59px;
+}
 
 
 

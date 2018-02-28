@@ -17,20 +17,15 @@
 </head>
 
 <body>
-<header id="header">
+<header>
     <tiles:insertAttribute name="header" />
-    <tiles:insertAttribute name="login" />
 </header>
-
-<section id="sidemenu">
-    <tiles:insertAttribute name="menu" />
-</section>
 
 <section id="site-content">
     <tiles:insertAttribute name="body" />
 </section>
 
-<footer id="footer">
+<footer>
     <tiles:insertAttribute name="footer" />
 </footer>
 <script src="https://use.fontawesome.com/0279959ac4.js"></script>

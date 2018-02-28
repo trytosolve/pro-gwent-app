@@ -20,7 +20,7 @@ public class NewsController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getMain(ModelAndView model, LoginForm loginForm) throws IOException {
+    public ModelAndView getMain(ModelAndView model) throws IOException {
         model.addObject("newsList", newsList.getAll());
         model.setViewName("newsPage");
         return model;
