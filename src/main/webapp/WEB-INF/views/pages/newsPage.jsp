@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div id="news" class="full_size">
+<div id="news">
     <c:forEach items="${newsList}" var="news">
         ${news.postDate}
         <a href=${pageContext.request.contextPath}/news/${news.id}>${news.name}</a><br>

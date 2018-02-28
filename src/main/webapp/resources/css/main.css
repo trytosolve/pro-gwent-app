@@ -295,6 +295,7 @@ footer {
     background-repeat: no-repeat;
     background-position: right bottom;
     background-attachment: fixed;
+    min-height: 91vh;
 }
 
 .main_section {
@@ -356,8 +357,4 @@ footer {
     border-radius: 3px;
     background: #f2f2f2;
     opacity: 0.85;
-}
-
-.full_size {
-    height: 91vh;
 }
