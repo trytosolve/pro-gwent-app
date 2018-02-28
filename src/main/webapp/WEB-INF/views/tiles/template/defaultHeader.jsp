@@ -5,11 +5,11 @@
 
 <div class="container clearfix">
     <div class="row">
-        <div class="col-md-2">
+        <a href="/" class="col-md-2">
             <div class="logo f25px bold upper">
                 <span>pr</span><i class="fa fa-circle"></i><span>gwent</span>
             </div>
-        </div>
+        </a>
         <div class="col-md-5">
             <nav>
                 <ul class="menu bold">
@@ -28,7 +28,7 @@
         <div class="col-md-3">
             <div class="search_container">
                 <form>
-                    <input type="text" class="search" placeholder="Search">
+                    <input type="text" class="search" placeholder="Site Search">
                 </form>
             </div>
         </div>
