@@ -3,52 +3,71 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
-<form:form action="${pageContext.request.contextPath}/cards" modelAttribute="searchForm" method="post">
-    <table align="left">
+<%--<form:form action="${pageContext.request.contextPath}/cards" modelAttribute="searchForm" method="post">--%>
 
-        <tr>
-            <td>Search:</td>
-            <td><form:input path="searchParam"/></td>
-            <td><span class="error"><form:errors path="searchParam"/></span></td>
-        </tr>
+<%--<table>--%>
+<%--<c:forEach items="${cardList}" var="card">--%>
+<%--<tr>--%>
+<%--<td>--%>
+<%--<img src="${card.url}" alt="">--%>
+<%--</td>--%>
+<%--<td>--%>
+<%--<ul>--%>
+<%--<li>NAME: ${card.name}</li>--%>
+<%--<li>TYPE: ${card.type}</li>--%>
+<%--<li>FACTION: ${card.faction}</li>--%>
+<%--<li>DESCRIPTION ${card.discription}</li>--%>
+<%--</ul>--%>
+<%--</td>--%>
+<%--</tr>--%>
+<%--</c:forEach>--%>
+<%--</table>--%>
 
-
-        <tr>
-            <c:forEach items="${possibleTypes}" var="type">
-                <td>
-                    <form:checkbox path="typesList" value="${type}"/>${type.description}
-                </td>
-            </c:forEach>
-        </tr>
-
-        <tr>
-            <c:forEach items="${possibleFactions}" var="faction">
-                <td>
-                    <form:checkbox path="factionsList" value="${faction}"/>${faction.description}
-                </td>
-            </c:forEach>
-        </tr>
-
-        <tr>
-            <td colspan="3"><input type="submit" value="Ok"/></td>
-        </tr>
-    </table>
-</form:form>
-
-<table>
-    <c:forEach items="${cardList}" var="card">
-        <tr>
-            <td>
-                <img src="${card.url}" alt="">
-            </td>
-            <td>
-                <ul>
-                    <li>NAME: ${card.name}</li>
-                    <li>TYPE: ${card.type}</li>
-                    <li>FACTION: ${card.faction}</li>
-                    <li>DESCRIPTION ${card.discription}</li>
-                </ul>
-            </td>
-        </tr>
-    </c:forEach>
-</table>
+<div id="card_db">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="search_card_form">
+                    <form:form action="${pageContext.request.contextPath}/cards" modelAttribute="searchForm"
+                               method="post">
+                        <div class="search_card fon">
+                            Search Card:<form:input path="searchParam"/>
+                        </div>
+                        <div class="types_filter fon">
+                            <c:forEach items="${possibleTypes}" var="type">
+                                <form:checkbox path="typesList" value="${type}"/>${type.description}
+                            </c:forEach>
+                        </div>
+                        <div class="faction_filter fon">
+                            <c:forEach items="${possibleFactions}" var="faction">
+                                <form:checkbox path="factionsList" value="${faction}"/>${faction.description}
+                            </c:forEach>
+                        </div>
+                        <div>
+                            <input type="submit" value="Find" class="fon">
+                        </div>
+                    </form:form>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="search_card_result">
+                    <c:forEach items="${cardList}" var="card">
+                        <div class="one_result_card fon">
+                            <div class="card_img">
+                                <img src="${card.url}" alt="">
+                            </div>
+                            <div class="card_param">
+                                <ul>
+                                    <li>NAME: ${card.name}</li>
+                                    <li>TYPE: ${card.type}</li>
+                                    <li>FACTION: ${card.faction}</li>
+                                    <li>DESCRIPTION ${card.discription}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
