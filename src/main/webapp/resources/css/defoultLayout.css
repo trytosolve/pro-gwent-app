@@ -20,80 +20,6 @@
     font-weight: 700;
 }
 
-header {
-    background: #24292E;
-}
-
-.logo {
-    float: left;
-    padding: 5px;
-    color: #FFFFFF;
-}
-
-nav {
-    float: left;
-}
-
-.menu {
-    padding: 0;
-    margin: 12px 0 0;
-}
-
-.menu li {
-    float: left;
-    display: block;
-    margin: 0 10px 0 auto;
-}
-
-.menu a {
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 14px;
-}
-
-.search_container {
-    float: right;
-    margin-top: 12px;
-    margin-right: 5px;
-}
-
-.search {
-    background: #a8a6aa;
-    border: 1px;
-    border-radius: 3px;
-    color: #fff;
-    font-size: 14px;
-}
-
-.sing {
-    padding: 0;
-    margin: 12px 0 0;
-}
-
-.sing span {
-    color: dimgrey;
-}
-
-.sing a {
-    color: #fff;
-    text-decoration: none;
-}
-
-footer {
-    background: #24292E;
-    height: 40px;
-}
-
-.signature {
-    padding-top: 10px;
-    color: #a8a6aa;
-}
-
-.error {
-    color: #ff3224;
-}
-
 .f11px {
     font-size: 11px;
 }
@@ -290,25 +216,25 @@ footer {
     font-size: 59px;
 }
 
+header {
+    background: #24292E;
+}
+
+footer {
+    background: #24292E;
+    height: 40px;
+}
+
+.error {
+    color: #ff3224;
+}
+
 #site-content {
     background: white url("/resources/img/main.jpg") fixed;
     background-repeat: no-repeat;
     background-position: right bottom;
     background-attachment: fixed;
     min-height: 91vh;
-}
-
-.main_section {
-    margin-top: 30%;
-    color: #f2f2f2;
-}
-
-#login {
-    padding-top: 50px;
-}
-
-#create_acc {
-    padding-top: 50px;
 }
 
 .sing_form {
@@ -326,30 +252,6 @@ footer {
     padding-left: 5px;
     margin-bottom: 10px;
 }
-
-.search_card_form {
-    margin: 30px;
-    float: left;
-}
-
-.search_card_result {
-    margin: 30px;
-}
-
-.search_card_result div {
-    float: left;
-}
-
-.card_param {
-    margin-top: 35px;
-    width: 400px;
-}
-
-.card_img {
-    padding: 0;
-    margin: 0;
-}
-
 .fon {
     padding: 5px;
     margin: 5px;
@@ -358,3 +260,8 @@ footer {
     background: #f2f2f2;
     opacity: 0.85;
 }
+
+
+
+
+
