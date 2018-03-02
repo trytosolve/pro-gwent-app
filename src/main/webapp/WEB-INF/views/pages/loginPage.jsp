@@ -6,6 +6,7 @@
         <div class="sing_form">
             <form:form onsubmit="return validate();" action="${pageContext.request.contextPath}/loginPage" modelAttribute="loginForm" method="post">
                 <div class="errors_block bold f8px">
+                    <span id="errorJS"></span>
                     <span class="error"><form:errors path="userLogin"/></span>
                     <span class="error"><form:errors path="userPassword"/></span>
                 </div>
@@ -16,7 +17,7 @@
                     </tr>
                     <tr>
                         <td>Password:</td>
-                        <td><form:password id="userPassword" path="userPassword"/></td>
+                        <td><form:password id="userPass" path="userPassword"/></td>
                     </tr>
                     <tr>
                         <td colspan="3"><input type="submit" value="Submit"/></td>
