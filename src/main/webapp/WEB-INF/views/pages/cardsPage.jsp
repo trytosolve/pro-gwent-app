@@ -15,14 +15,14 @@
                         <div class="types_filter fon">
                             <c:forEach items="${possibleTypes}" var="type">
                                 <div>
-                                    <form:checkbox path="typesList" value="${type}"/>${type.description}
+                                    <form:checkbox path="typesList" value="${type}"/><span>${type.description}</span>
                                 </div>
                             </c:forEach>
                         </div>
                         <div class="faction_filter fon">
                             <c:forEach items="${possibleFactions}" var="faction">
                                 <div>
-                                    <form:checkbox path="factionsList" value="${faction}"/>${faction.description}
+                                    <form:checkbox path="factionsList" value="${faction}"/><span>${faction.description}</span>
                                 </div>
                             </c:forEach>
                         </div>

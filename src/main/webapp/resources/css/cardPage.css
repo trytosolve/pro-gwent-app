@@ -21,4 +21,6 @@
     margin: 0;
 }
 
-
+.faction_filter span,.types_filter span {
+    margin-left: 5px;
+}
