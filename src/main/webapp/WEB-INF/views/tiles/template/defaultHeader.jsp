@@ -6,7 +6,7 @@
 <div class="container clearfix">
     <div class="row">
         <a href="/" class="col-md-2">
-            <div class="logo f25px bold upper">
+            <div class="logo f25px bold upper" id="logo">
                 <span>pr</span><i class="fa fa-circle"></i><span>gwent</span>
             </div>
         </a>
