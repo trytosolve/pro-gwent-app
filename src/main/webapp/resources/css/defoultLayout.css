@@ -230,10 +230,7 @@ footer {
 }
 
 #site-content {
-    background: white url("/resources/img/main.jpg") fixed;
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-attachment: fixed;
+    background: white url("/resources/img/main.jpg") no-repeat center/cover  fixed;
     min-height: 91vh;
 }
 
