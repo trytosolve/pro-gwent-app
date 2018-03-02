@@ -1,4 +1,4 @@
-function validate() {
+function validateIn() {
     var userLogin = document.getElementById("userLogin");
     var userPass = document.getElementById("userPass");
     var errorJS = document.getElementById("errorJS");

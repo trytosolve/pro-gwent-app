@@ -5,10 +5,11 @@
 <div id="create_acc">
     <div class="container">
         <div class="sing_form">
-            <form:form action="${pageContext.request.contextPath}/loginPage/createAccountPage"
+            <form:form onsubmit="return validateUp()" action="${pageContext.request.contextPath}/loginPage/createAccountPage"
                        commandName="registrationForm"
                        method="post">
                 <div class="errors_block bold f8px">
+                    <span id="errorJS"></span>
                     <span class="error"><form:errors path="userLogin"/></span>
                     <span class="error"><form:errors path="userPassword"/></span>
                     <span class="error"><form:errors path="confirmPassword"/></span>
@@ -17,19 +18,19 @@
                 <table align="center">
                     <tr>
                         <td>Username:</td>
-                        <td><form:input path="userLogin"/></td>
+                        <td><form:input id="userLogin" path="userLogin"/></td>
                     </tr>
                     <tr>
                         <td>Password:</td>
-                        <td><form:password path="userPassword"/></td>
+                        <td><form:password id="userPass" path="userPassword"/></td>
                     </tr>
                     <tr>
                         <td>Confirm Password:</td>
-                        <td><form:password path="confirmPassword"/></td>
+                        <td><form:password id="confirmPass" path="confirmPassword"/></td>
                     </tr>
                     <tr>
                         <td>Email:</td>
-                        <td><form:input path="userEmail"/></td>
+                        <td><form:input id="email" path="userEmail"/></td>
                     </tr>
                     <tr>
                         <td colspan="3"><input type="submit" value="Submit"/></td>
