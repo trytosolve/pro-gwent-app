@@ -15,4 +15,10 @@ public class NewsCreatorController {
         model.setViewName("newsCreator");
         return model;
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView addNewsToRepo(ModelAndView model) {
+        model.setViewName("newsCreator");
+        return model;
+    }
 }
