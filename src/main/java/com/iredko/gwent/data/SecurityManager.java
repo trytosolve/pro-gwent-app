@@ -36,7 +36,7 @@ public class SecurityManager {
     }
 
     public void saveUser(String userLogin,String userPassword,String userEmail) {
-        userRepository.addUserToRepository(userLogin,userEmail,userPassword);
+        userRepository.addUserToRepository(userLogin,userPassword,userEmail);
     }
 
     public User findUser(String userLogin) {

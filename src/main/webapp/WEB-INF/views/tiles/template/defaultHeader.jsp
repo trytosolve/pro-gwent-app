@@ -41,7 +41,7 @@
                         <a href="/loginPage/createAccountPage">Sign up</a>
                     </c:when>
                     <c:otherwise>
-                        <span class="bold f15px">${sessionScope.user.login}:</span>
+                        <a  href="#" class="bold f15px"><span>${sessionScope.user.login}:</span></a>
                         <a href="/loginPage/logout">logout</a>
                     </c:otherwise>
                 </c:choose>
