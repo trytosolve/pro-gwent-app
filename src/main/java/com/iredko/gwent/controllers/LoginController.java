@@ -61,25 +61,25 @@ public class LoginController {
         return new ModelAndView("redirect:" + "/");
     }
 
-    @RequestMapping(value = "/createAccountPage", method = RequestMethod.GET)
+    @RequestMapping(value = "/registrationPage", method = RequestMethod.GET)
     public ModelAndView showRegistrationPage(ModelAndView model, RegistrationForm registrationForm) {
         model.addObject("registrationForm", registrationForm);
-        model.setViewName("newAccountPage");
+        model.setViewName("registrationPage");
         return model;
     }
 
-    @RequestMapping(value = "/createAccountPage", method = RequestMethod.POST)
+    @RequestMapping(value = "/registrationPage", method = RequestMethod.POST)
     public ModelAndView showRegistrationResult(RegistrationValidator registrationValidator, ModelAndView model,
                                             RegistrationForm registrationForm, BindingResult result,HttpSession session) {
         registrationValidator.validate(registrationForm, result);
         if (result.hasErrors()) {
-            model.setViewName("newAccountPage");
+            model.setViewName("registrationPage");
             return model;
         }
         if (!result.hasErrors()) {
             if(securityManager.userExists(registrationForm.getUserLogin())) {
                 result.rejectValue("userLogin", "userLogin.exists", "Login already in use!");
-                model.setViewName("newAccountPage");
+                model.setViewName("registrationPage");
                 return model;
             }
             securityManager.saveUser(registrationForm.getUserLogin(),registrationForm.getUserPassword()

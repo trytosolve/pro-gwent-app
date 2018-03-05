@@ -1,11 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<link href="<c:url value="/resources/css/registrationPage.css" />" rel="stylesheet">
 
 <div id="create_acc">
     <div class="container">
         <div class="sing_form">
-            <form:form onsubmit="return validateUp()" action="${pageContext.request.contextPath}/loginPage/createAccountPage"
+            <form:form onsubmit="return validateUp()" action="${pageContext.request.contextPath}/loginPage/registrationPage"
                        commandName="registrationForm"
                        method="post">
                 <div class="errors_block bold f8px">

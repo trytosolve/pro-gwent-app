@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<link href="<c:url value="/resources/css/loginPage.css" />" rel="stylesheet">
 
 <div id="login">
     <div class="container">

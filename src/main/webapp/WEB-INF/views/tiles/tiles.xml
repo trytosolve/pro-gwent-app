@@ -42,9 +42,19 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/patchesPage.jsp" />
     </definition>
 
-    <definition name="newAccountPage" extends="base-definition">
+    <definition name="registrationPage" extends="base-definition">
         <put-attribute name="title" value="New account page" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/newAccountPage.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/registrationPage.jsp" />
+    </definition>
+
+    <definition name="accountPage" extends="base-definition">
+        <put-attribute name="title" value="Account page" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/accountPage.jsp" />
+    </definition>
+
+    <definition name="newsCreator" extends="base-definition">
+        <put-attribute name="title" value="News Creator" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/newsCreator.jsp" />
     </definition>
 
 

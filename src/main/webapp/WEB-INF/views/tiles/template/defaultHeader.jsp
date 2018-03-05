@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<link href="<c:url value="/resources/css/defaultHeader.css" />" rel="stylesheet">
 
 
 <div class="container clearfix">
@@ -38,10 +39,12 @@
                     <c:when test="${empty sessionScope.user.login}">
                         <a href="/loginPage">Sign in</a>
                         <span>or</span>
-                        <a href="/loginPage/createAccountPage">Sign up</a>
+                        <a href="/loginPage/registrationPage">Sign up</a>
                     </c:when>
                     <c:otherwise>
-                        <a  href="#" class="bold f15px"><span>${sessionScope.user.login}:</span></a>
+                        <span class="account_name">
+                            <a  href="/accountPage" class="bold f15px">${sessionScope.user.login}:</a>
+                        </span>
                         <a href="/loginPage/logout">logout</a>
                     </c:otherwise>
                 </c:choose>

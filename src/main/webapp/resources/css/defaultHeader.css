@@ -21,9 +21,11 @@ nav {
 
 .menu a {
     color: #fff;
-    text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
+}
+.menu a:hover {
+    color: #337ab7;
 }
 
 .search_container {
@@ -49,7 +51,15 @@ nav {
     color: dimgrey;
 }
 
-.sing a {
+.sing a{
+    color: #fff;
+}
+
+.sing a:hover {
+    color: #337ab7;
+}
+
+.account_name a{
     color: dimgrey;
     text-decoration: none;
 }
