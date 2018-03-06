@@ -7,6 +7,8 @@ import java.sql.Date;
 @Component
 public class User {
 
+    private int id;
+
     private String login;
 
     private String password;
@@ -14,6 +16,14 @@ public class User {
     private String email;
 
     private Date lastlogin;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getLogin() {
         return login;

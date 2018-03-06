@@ -3,7 +3,7 @@ package com.iredko.gwent.controllers;
 import com.iredko.gwent.data.CardFaction;
 import com.iredko.gwent.data.CardRepository;
 import com.iredko.gwent.data.CardType;
-import com.iredko.gwent.data.SearchFilter;
+import com.iredko.gwent.models.SearchFilter;
 import com.iredko.gwent.models.SearchForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

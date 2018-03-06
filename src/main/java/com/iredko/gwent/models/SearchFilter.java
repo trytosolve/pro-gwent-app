@@ -1,4 +1,7 @@
-package com.iredko.gwent.data;
+package com.iredko.gwent.models;
+
+import com.iredko.gwent.data.CardFaction;
+import com.iredko.gwent.data.CardType;
 
 import java.util.Set;
 

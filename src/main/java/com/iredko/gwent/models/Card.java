@@ -1,12 +1,25 @@
-package com.iredko.gwent.data;
+package com.iredko.gwent.models;
 
 public class Card {
 
+    private int id;
     private String url;
     private String name;
     private String description;
     private String type;
     private String faction;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
     public String getUrl() {
         return url;

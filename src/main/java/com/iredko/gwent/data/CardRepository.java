@@ -1,9 +1,9 @@
 package com.iredko.gwent.data;
 
-import com.iredko.gwent.models.SearchForm;
+import com.iredko.gwent.models.Card;
+import com.iredko.gwent.models.SearchFilter;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.Null;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

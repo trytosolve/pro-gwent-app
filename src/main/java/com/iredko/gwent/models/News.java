@@ -3,18 +3,19 @@ package com.iredko.gwent.models;
 import java.time.LocalDateTime;
 
 public class News {
-    private LocalDateTime createDateNews;
+    private int id;
     private StringBuilder newsTitle;
     private StringBuilder newsDescription;
     private StringBuilder newsBody;
+    private LocalDateTime createDateNews;
 
-//    public News(LocalDateTime createDateNews, StringBuilder newsTitle, StringBuilder newsDescription, StringBuilder newsBody) {
-////        this.createDateNews = LocalDateTime.now();
-//        this.newsTitle = newsTitle;
-//        this.newsDescription = newsDescription;
-//        this.newsBody = newsBody;
-//    }
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public LocalDateTime getCreateDateNews() {
         return createDateNews;

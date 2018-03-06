@@ -23,12 +23,13 @@ public class UserRepository {
             throw new RuntimeException("Cannot find com.mysql.jdbc.Driver",e);
         }
         try(Connection conn= DriverManager.getConnection(dbParams.getUrl(),dbParams.getUsername(),dbParams.getPassword())) {
-            String sql = "select login,password,email,logintime " +
+            String sql = "select id,login,password,email,logintime " +
                     "from webapp.users where login = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1,login);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                user.setId(rs.getInt("id"));
                 user.setLogin(rs.getString("login"));
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("email"));
