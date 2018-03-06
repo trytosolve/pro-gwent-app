@@ -1,0 +1,29 @@
+#news_creator {
+    padding-top: 20px;
+}
+
+.create_news_title input{
+    width: 1142px;
+}
+
+#news_creator p {
+    margin-top: 5px;
+    margin-bottom:5px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.create_news_submit {
+    margin-top: 10px;
+}
+
+.textarea1 {
+    height: 200px;
+    width: 1142px;
+}
+
+.textarea2 {
+    height: 440px;
+    width: 1142px;
+}
