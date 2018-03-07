@@ -1,5 +1,6 @@
 package com.iredko.gwent.controllers;
 
+import com.iredko.gwent.DAO.NewsDAO;
 import com.iredko.gwent.data.NewsList;
 import com.iredko.gwent.models.LoginForm;
 import org.springframework.stereotype.Controller;
@@ -13,24 +14,24 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/news")
 public class NewsController {
-    private final NewsList newsList;
+    private final NewsDAO newsDAO;
 
-    public NewsController(NewsList newsList) {
-        this.newsList = newsList;
+    public NewsController(NewsDAO newsDAO) {
+        this.newsDAO = newsDAO;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getMain(ModelAndView model) throws IOException {
-        model.addObject("newsList", newsList.getAll());
+    public ModelAndView getAllNews(ModelAndView model) {
+        model.addObject("newsList", newsDAO.selectAllNews());
         model.setViewName("newsPage");
         return model;
     }
 
-    @RequestMapping(value="{id}",method = RequestMethod.GET)
-    public ModelAndView getNews(@PathVariable int id, ModelAndView model) {
-//        model.addObject("text", newsList.getNews(id).getText());
-        model.setViewName("newsPageById");
-        return model;
-    }
+//    @RequestMapping(value="{id}",method = RequestMethod.GET)
+//    public ModelAndView getNews(@PathVariable int id, ModelAndView model) {
+//        model.addObject("text", newsList.getNews(id).getNewsBody());
+//        model.setViewName("newsPageById");
+//        return model;
+//    }
 
 }

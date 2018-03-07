@@ -4,8 +4,8 @@
 
 <div id="news">
     <c:forEach items="${newsList}" var="news">
-        ${news.postDate}
-        <a href=${pageContext.request.contextPath}/news/${news.id}>${news.name}</a><br>
-        ${news.description}<br>
+        ${news.createDateNews}
+        <a href=${pageContext.request.contextPath}/news/${news.id}>${news.newsTitle}</a><br>
+        ${news.newsDescription}<br>
     </c:forEach>
 </div>

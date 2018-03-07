@@ -2,10 +2,13 @@ package com.iredko.gwent.DAO;
 
 import com.iredko.gwent.models.News;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
-import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
-import java.util.Map;
+
 
 public class NewsDAO {
     private JdbcTemplate jdbcTemplate;
@@ -20,11 +23,24 @@ public class NewsDAO {
         return jdbcTemplate.update(query);
     }
 
-//    public List<News> selectAllNews() {
-//        List<News> newsList = new ArrayList<>();
-//        String query  = "select * from webapp.news";
-//        List<Map> rows = getJdbcTemplate().get
-//        return null;
-//    }
+    public List<News> selectAllNews() {
+        String query = "select * from webapp.news";
+        return jdbcTemplate.query(query, new RowMapper<News>() {
+            @Override
+            public News mapRow(ResultSet resultSet, int i) throws SQLException {
+                News news = new News();
+                news.setId(resultSet.getInt(1));
+                String title = resultSet.getString(2);
+                news.setNewsTitle(new StringBuilder(title.subSequence(0,title.length())));
+                String description = resultSet.getString(3);
+                news.setNewsDescription(new StringBuilder(description.subSequence(0,description.length())));
+                String body = resultSet.getString(4);
+                news.setNewsBody(new StringBuilder(body.subSequence(0,body.length())));
+                Timestamp timestamp = resultSet.getTimestamp(5);
+                news.setCreateDateNews(timestamp.toLocalDateTime());
+                return news;
+            }
+        });
+    }
 
 }
