@@ -3,9 +3,19 @@
 <link href="<c:url value="/resources/css/newsPage.css" />" rel="stylesheet">
 
 <div id="news">
-    <c:forEach items="${newsList}" var="news">
-        ${news.createDateNews}
-        <a href=${pageContext.request.contextPath}/news/${news.id}>${news.newsTitle}</a><br>
-        ${news.newsDescription}<br>
-    </c:forEach>
+    <div class="container">
+        <c:forEach items="${newsList}" var="news">
+            <div class="one_news fon">
+                <div class="news_creation_time">
+                    ${news.createDateNews}
+                </div>
+                <div class="news_title">
+                    <a href=${pageContext.request.contextPath}/news/${news.id}>${news.newsTitle}</a><br>
+                </div>
+                <div class="news_description">
+                    ${news.newsDescription}
+                </div>
+            </div>
+        </c:forEach>
+    </div>
 </div>

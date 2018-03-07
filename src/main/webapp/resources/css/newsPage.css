@@ -1,0 +1,26 @@
+#news{
+    padding-top: 10px;
+}
+
+.one_news {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.news_creation_time {
+    color: #3A3A3A;
+}
+
+.news_title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #337ab7;
+}
+
+.news_description {
+    font-size: 18px;
+    color: #333333;
+}

@@ -25,7 +25,7 @@ public class NewsController {
 
     @RequestMapping(value="{id}",method = RequestMethod.GET)
     public ModelAndView getNews(@PathVariable int id, ModelAndView model) {
-        model.addObject("newsBody", newsDAO.selectNewsById(id).getNewsBody());
+        model.addObject("news", newsDAO.selectNewsById(id));
         model.setViewName("newsPageById");
         return model;
     }

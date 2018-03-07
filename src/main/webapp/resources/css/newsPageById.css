@@ -1,0 +1,16 @@
+#solo_news {
+    padding-top: 10px;
+}
+
+.news_by_id {
+    padding: 5px;
+}
+
+.title_news_by_id {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.body_news {
+    font-size: 16px;
+}
