@@ -14,3 +14,7 @@
 .body_news {
     font-size: 16px;
 }
+
+.body_news img {
+    background: rgba(0,0,0,1);
+}

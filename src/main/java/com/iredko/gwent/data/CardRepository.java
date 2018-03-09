@@ -29,20 +29,49 @@ public class CardRepository {
                     "or faction LIKE ? or description LIKE ?)";
             if (searchFilter.getCardTypeSet() != null) {
                 if (searchFilter.getCardTypeSet().size() != 0) {
-                    sql = sql + " and type in(" + searchFilter.cardTypeToString() + ")";
+                    sql = sql + " and (";
+                    for (int i=0;i<searchFilter.getCardTypeSet().size();i++) {
+                        sql = sql + "type=?";
+                        if (i != searchFilter.getCardTypeSet().size()-1) {
+                            sql = sql +" or ";
+                        }
+                    }
+                    sql = sql + ")";
                 }
             }
             if (searchFilter.getCardFactionSet() != null) {
                 if (searchFilter.getCardFactionSet().size() != 0) {
-                    sql = sql + " and faction in(" + searchFilter.cardFactionToString() + ")";
+                    sql = sql + " and (";
+                    for (int i=0;i<searchFilter.getCardFactionSet().size();i++) {
+                        sql = sql + "faction=?";
+                        if (i != searchFilter.getCardFactionSet().size()-1) {
+                            sql = sql +" or ";
+                        }
+                    }
+                    sql = sql + ")";
                 }
             }
 
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "%" + searchFilter.getSearchParam() + "%");
-            stmt.setString(2, "%" + searchFilter.getSearchParam() + "%");
-            stmt.setString(3, "%" + searchFilter.getSearchParam() + "%");
-            stmt.setString(4, "%" + searchFilter.getSearchParam() + "%");
+            int param = 0;
+            stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
+            stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
+            stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
+            stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
+            if (searchFilter.getCardTypeSet() != null) {
+                if (searchFilter.getCardTypeSet().size() != 0) {
+                    for (CardType cardType : searchFilter.getCardTypeSet()) {
+                        stmt.setString(++param,cardType.getDescription());
+                    }
+                }
+            }
+            if (searchFilter.getCardFactionSet() != null) {
+                if (searchFilter.getCardFactionSet().size() != 0) {
+                    for (CardFaction cardFaction : searchFilter.getCardFactionSet()) {
+                        stmt.setString(++param,cardFaction.getDescription());
+                    }
+                }
+            }
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {

@@ -50,29 +50,4 @@ public class SearchFilter {
         this.cardFactionSet = cardFactionSet;
     }
 
-    public StringBuilder cardTypeToString() {
-        StringBuilder result = new StringBuilder();
-        for (CardType type : cardTypeSet) {
-            if (result.length() != 0) {
-                result.append(",");
-            }
-            result.append("\'");
-            result.append(type.getDescription());
-            result.append("\'");
-        }
-        return result;
-    }
-
-    public StringBuilder cardFactionToString() {
-        StringBuilder result = new StringBuilder();
-        for (CardFaction faction : cardFactionSet) {
-            if (result.length() != 0) {
-                result.append(",");
-            }
-            result.append("\'");
-            result.append(faction.getDescription());
-            result.append("\'");
-        }
-        return result;
-    }
 }

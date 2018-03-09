@@ -1,13 +1,9 @@
 package com.iredko.gwent.DAO;
 
 import com.iredko.gwent.models.News;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -19,9 +15,12 @@ public class NewsDAO {
     }
 
     public int insertNews(News news) {
-        String query = "insert into webapp.news (title,description,body,create_time) values('"+news.getNewsTitle()+"','" +
-                ""+news.getNewsDescription()+"','"+news.getNewsBody()+"','"+news.getCreateDateNews()+"')";
-        return jdbcTemplate.update(query);
+        StringBuilder title = news.getNewsTitle();
+        StringBuilder description = news.getNewsDescription();
+        StringBuilder body = news.getNewsBody();
+        String create_time = news.getCreateDateNews().toString();
+        String query = "insert into webapp.news (title,description,body,create_time) values(?,?,?,?)";
+        return jdbcTemplate.update(query,title,description,body,create_time);
     }
 
     public List<News> selectAllNews() {
