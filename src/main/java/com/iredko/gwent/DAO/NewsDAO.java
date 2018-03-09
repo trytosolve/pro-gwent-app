@@ -24,7 +24,7 @@ public class NewsDAO {
     }
 
     public List<News> selectAllNews() {
-        String query = "select * from webapp.news";
+        String query = "select * from webapp.news order by id desc";
         return jdbcTemplate.query(query, new NewsRowMapper());
     }
 
