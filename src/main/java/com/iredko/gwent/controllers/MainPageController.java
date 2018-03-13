@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainPageController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getMain(ModelAndView model, LoginForm loginForm) {
+    public ModelAndView getMain(ModelAndView model) {
         model.setViewName("mainPage");
         return model;
     }

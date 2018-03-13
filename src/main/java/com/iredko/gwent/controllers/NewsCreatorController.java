@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 
 @Controller
@@ -21,8 +22,11 @@ public class NewsCreatorController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView showNewsCreatorPage(ModelAndView model,News news) {
-        model.addObject("news",news);
+    public ModelAndView showNewsCreatorPage(ModelAndView model, News news, HttpSession session) {
+        if (session.getAttribute("user") == null) {
+            return new ModelAndView("redirect:" + "/");
+        }
+        model.addObject("news", news);
         model.setViewName("newsCreator");
         return model;
     }
@@ -30,7 +34,7 @@ public class NewsCreatorController {
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView addNewsToRepo(ModelAndView model, News news) {
         news.setCreateDateNews(LocalDateTime.now());
-        model.addObject("news",news);
+        model.addObject("news", news);
         newsDAO.insertNews(news);
         model.setViewName("newsCreator");
         return model;

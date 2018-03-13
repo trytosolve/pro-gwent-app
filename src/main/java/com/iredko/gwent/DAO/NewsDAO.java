@@ -3,7 +3,6 @@ package com.iredko.gwent.DAO;
 import com.iredko.gwent.models.News;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 

@@ -50,4 +50,5 @@ public class SearchFilter {
         this.cardFactionSet = cardFactionSet;
     }
 
+
 }
