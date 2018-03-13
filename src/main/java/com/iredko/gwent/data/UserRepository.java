@@ -16,12 +16,7 @@ public class UserRepository {
 
     public User getUserByLogin(String login) {
         User user = new User();
-        //TODO этот кусок кода у тебя повторяется 2 раза точь-в-точь. Что если вырезать его в отдельный метод loadDriver()? :)
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Cannot find com.mysql.jdbc.Driver",e);
-        }
+        loadDriver();
         try(Connection conn= DriverManager.getConnection(dbParams.getUrl(),dbParams.getUsername(),dbParams.getPassword())) {
             String sql = "select id,login,password,email,logintime " +
                     "from webapp.users where login = ?";
@@ -41,12 +36,9 @@ public class UserRepository {
         return user;
     }
 
+
     public void addUserToRepository(String login,String password,String email) {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Cannot find com.mysql.jdbc.Driver",e);
-        }
+        loadDriver();
         try (Connection conn = DriverManager.getConnection(dbParams.getUrl(),dbParams.getUsername(),dbParams.getPassword())){
             String sql= "insert into webapp.users (login,password,email)" +
                     "VALUES(?,?,?)";
@@ -59,5 +51,13 @@ public class UserRepository {
             throw new RuntimeException("Cannot create account in database", e);
         }
 
+    }
+
+    public void loadDriver() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Cannot find com.mysql.jdbc.Driver",e);
+        }
     }
 }

@@ -1,33 +1,30 @@
-//TODO что такое Up?
-function validateUp() {
+function validateSingUpForm() {
     var userLogin = document.getElementById("userLogin");
     var userPass = document.getElementById("userPass");
     var confirmPass = document.getElementById("confirmPass");
     var email = document.getElementById("email");
-    //TODO странное название для елемента. В нем нету JSa :)
-    var errorJS = document.getElementById("errorJS");
-    errorJS.innerHTML="";
+    var validationErrorMassage = document.getElementById("validationErrorMassage");
+    validationErrorMassage.innerHTML="";
 
     if(!userLogin.value) {
-        //TODO так не делается. Ты делаешь css class типа error и добавляешь класс к елементу, а не стили. Что если завтра мне скажут перекрасить в фиолетовый? как я догадаюсь что ты стили в javascript хуячишь?)
-        userLogin.style.border = "2px solid red"
+        userLogin.setAttribute("class","form_input_error")
         return false
     }
     if(!userPass.value) {
-        userPass.style.border = "2px solid red"
+        userPass.setAttribute("class","form_input_error")
         return false
     }
     if(!confirmPass.value) {
-        confirmPass.style.border = "2px solid red"
+        confirmPass.setAttribute("class","form_input_error")
         return false
     }
     if(!email.value) {
-        email.style.border = "2px solid red"
+        email.setAttribute("class","form_input_error")
         return false
     }
     if(userLogin.value.length<2 || userLogin.value.length>16) {
-        errorJS.innerHTML='Name size must be between 2 and 16'
-        errorJS.style.color = "red"
+        validationErrorMassage.innerHTML='Name size must be between 2 and 16'
+        validationErrorMassage.style.color = "red"
         return false
     }
     return true;

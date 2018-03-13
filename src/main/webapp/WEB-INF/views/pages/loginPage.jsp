@@ -5,9 +5,9 @@
 <div id="login">
     <div class="container">
         <div class="sing_form">
-            <form:form onsubmit="return validateIn();" action="${pageContext.request.contextPath}/loginPage" modelAttribute="loginForm" method="post">
+            <form:form onsubmit="return validateSingInForm();" action="${pageContext.request.contextPath}/loginPage" modelAttribute="loginForm" method="post">
                 <div class="errors_block bold f8px">
-                    <span id="errorJS"></span>
+                    <span id="validationErrorMassage"></span>
                     <span class="error"><form:errors path="userLogin"/></span>
                     <span class="error"><form:errors path="userPassword"/></span>
                 </div>
