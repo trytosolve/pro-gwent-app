@@ -5,26 +5,17 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
-//TODO если ты откроешь класс RowMapper, то увидишь что он все таки RowMapper<T>
-//TODO и если бы ты обьявил свой класс как implements RowMapper<News> то метод mapRow возвращал бы не Object а News
-//TODO плюс в NewsDAO#selectNewsById не надо было бы ничего кастить
-public class NewsRowMapper implements RowMapper {
+public class NewsRowMapper implements RowMapper<News> {
 
     @Override
-    public Object mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+    public News mapRow(ResultSet rs, int rowNum) throws SQLException {
         News news = new News();
-        news.setId(resultSet.getInt(1));
-        String title = resultSet.getString(2);
-        //TODO а если бы в News были строки не надо было бы заниматься хуйней типа создания стрингбилдера из строки :)
-        news.setNewsTitle(new StringBuilder(title.subSequence(0,title.length())));
-        String description = resultSet.getString(3);
-        news.setNewsDescription(new StringBuilder(description.subSequence(0,description.length())));
-        String body = resultSet.getString(4);
-        news.setNewsBody(new StringBuilder(body.subSequence(0,body.length())));
-        Timestamp timestamp = resultSet.getTimestamp(5);
-        news.setCreateDateNews(timestamp.toLocalDateTime());
+        news.setId(rs.getInt(1));
+        news.setNewsTitle(rs.getString(2));
+        news.setNewsDescription(rs.getString(3));
+        news.setNewsBody(rs.getString(4));
+        news.setCreateDateNews(rs.getTimestamp(5).toLocalDateTime());
         return news;
     }
 }

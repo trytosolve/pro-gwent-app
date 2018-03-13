@@ -4,10 +4,9 @@ import java.time.LocalDateTime;
 
 public class News {
     private int id;
-    //TODO стринг билдер это класс помогающий создать строку из кусочков, а не штука которую надо пихать в поле. Тут должны быть стринги
-    private StringBuilder newsTitle;
-    private StringBuilder newsDescription;
-    private StringBuilder newsBody;
+    private String newsTitle;
+    private String newsDescription;
+    private String newsBody;
     private LocalDateTime createDateNews;
 
     public int getId() {
@@ -18,35 +17,35 @@ public class News {
         this.id = id;
     }
 
+    public String getNewsTitle() {
+        return newsTitle;
+    }
+
+    public void setNewsTitle(String newsTitle) {
+        this.newsTitle = newsTitle;
+    }
+
+    public String getNewsDescription() {
+        return newsDescription;
+    }
+
+    public void setNewsDescription(String newsDescription) {
+        this.newsDescription = newsDescription;
+    }
+
+    public String getNewsBody() {
+        return newsBody;
+    }
+
+    public void setNewsBody(String newsBody) {
+        this.newsBody = newsBody;
+    }
+
     public LocalDateTime getCreateDateNews() {
         return createDateNews;
     }
 
     public void setCreateDateNews(LocalDateTime createDateNews) {
         this.createDateNews = createDateNews;
-    }
-
-    public StringBuilder getNewsTitle() {
-        return newsTitle;
-    }
-
-    public void setNewsTitle(StringBuilder newsTitle) {
-        this.newsTitle = newsTitle;
-    }
-
-    public StringBuilder getNewsDescription() {
-        return newsDescription;
-    }
-
-    public void setNewsDescription(StringBuilder newsDescription) {
-        this.newsDescription = newsDescription;
-    }
-
-    public StringBuilder getNewsBody() {
-        return newsBody;
-    }
-
-    public void setNewsBody(StringBuilder newsBody) {
-        this.newsBody = newsBody;
     }
 }

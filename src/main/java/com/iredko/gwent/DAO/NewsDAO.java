@@ -15,9 +15,9 @@ public class NewsDAO {
     }
 
     public void insert(News news) {
-        StringBuilder title = news.getNewsTitle();
-        StringBuilder description = news.getNewsDescription();
-        StringBuilder body = news.getNewsBody();
+        String title = news.getNewsTitle();
+        String description = news.getNewsDescription();
+        String body = news.getNewsBody();
         String create_time = news.getCreateDateNews().toString();
         String query = "insert into webapp.news (title,description,body,create_time) values(?,?,?,?)";
         jdbcTemplate.update(query,title,description,body,create_time);
@@ -30,7 +30,7 @@ public class NewsDAO {
 
     public News selectById(int newsId) {
         String query = "select * from webapp.news where id=?";
-        return (News) jdbcTemplate.queryForObject(query, new Object[]{newsId}, new NewsRowMapper());
+        return jdbcTemplate.queryForObject(query, new Object[]{newsId}, new NewsRowMapper());
     }
 
 }
