@@ -18,18 +18,11 @@ public class SecurityManager {
 
     public boolean userExists(String userLogin) {
         User user = userRepository.getUserByLogin(userLogin);
-        //TODO а можно написать просто return user.getLogin() != null
-        if (user.getLogin() == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return user.getLogin() != null;
     }
 
     public boolean passwordIsCorrect(String userLogin, String userPassword){
         User user = userRepository.getUserByLogin(userLogin);
-        //TODO вообще все ок, но это можно упростить и написать:
-        // TODO return userPassword.equals(user.getPassword())
         if (!user.getPassword().equals(userPassword)) {
             return false;
         }

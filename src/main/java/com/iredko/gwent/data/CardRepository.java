@@ -10,8 +10,8 @@ import java.util.List;
 
 @Component
 public class CardRepository {
-    //TODO поле должно быть приватным
-    DbParams dbParams;
+
+    private DbParams dbParams;
 
     public CardRepository(DbParams dbParams) {
         this.dbParams = dbParams;
