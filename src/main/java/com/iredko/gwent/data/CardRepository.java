@@ -10,12 +10,14 @@ import java.util.List;
 
 @Component
 public class CardRepository {
+    //TODO поле должно быть приватным
     DbParams dbParams;
 
     public CardRepository(DbParams dbParams) {
         this.dbParams = dbParams;
     }
 
+    //TODO в методе 70 строк. Тут нихуя разобрать невозможно. Подели его на логические части
     public List<Card> getCardList(SearchFilter searchFilter) {
         List<Card> cardList = new ArrayList<>();
         try {

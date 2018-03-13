@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class News {
     private int id;
+    //TODO стринг билдер это класс помогающий создать строку из кусочков, а не штука которую надо пихать в поле. Тут должны быть стринги
     private StringBuilder newsTitle;
     private StringBuilder newsDescription;
     private StringBuilder newsBody;

@@ -1,3 +1,4 @@
+//TODO что такое In?
 function validateIn() {
     var userLogin = document.getElementById("userLogin");
     var userPass = document.getElementById("userPass");
@@ -5,6 +6,7 @@ function validateIn() {
     errorJS.innerHTML="";
 
     if(!userLogin.value) {
+        //TODO аналогично. В джаваскрипте не должны настраиваться стили напрямую. Все стили должны быть в CSS
         userLogin.style.border = "2px solid red"
         return false
     }

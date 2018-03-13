@@ -5,6 +5,7 @@
 <div id="solo_news">
     <div class="container">
         <div class="news_by_id fon">
+            <!-- TODO by_id не должно быть названием стиля. Это немного странно что стили знают как ищутся новости :D -->
             <div class="title_news_by_id">
                 ${news.newsTitle}
             </div>

@@ -18,6 +18,7 @@ public class SecurityManager {
 
     public boolean userExists(String userLogin) {
         User user = userRepository.getUserByLogin(userLogin);
+        //TODO а можно написать просто return user.getLogin() != null
         if (user.getLogin() == null) {
             return false;
         } else {
