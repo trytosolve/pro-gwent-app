@@ -39,7 +39,8 @@
     </bean>
 
     <bean id="newsdao" class="com.iredko.gwent.DAO.NewsDAO">
-        <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+        <!--<property name="jdbcTemplate" ref="jdbcTemplate"></property>-->
+        <constructor-arg name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
     <!--DB for template-->
 

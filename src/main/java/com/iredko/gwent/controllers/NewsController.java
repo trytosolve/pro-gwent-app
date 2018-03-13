@@ -18,14 +18,14 @@ public class NewsController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getAllNews(ModelAndView model) {
-        model.addObject("newsList", newsDAO.selectAllNews());
+        model.addObject("newsList", newsDAO.selectAll());
         model.setViewName("newsPage");
         return model;
     }
 
     @RequestMapping(value="{id}",method = RequestMethod.GET)
     public ModelAndView getNews(@PathVariable int id, ModelAndView model) {
-        model.addObject("news", newsDAO.selectNewsById(id));
+        model.addObject("news", newsDAO.selectById(id));
         model.setViewName("newsPageById");
         return model;
     }

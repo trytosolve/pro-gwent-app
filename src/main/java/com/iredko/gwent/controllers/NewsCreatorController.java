@@ -35,7 +35,7 @@ public class NewsCreatorController {
     public ModelAndView addNewsToRepo(ModelAndView model, News news) {
         news.setCreateDateNews(LocalDateTime.now());
         model.addObject("news", news);
-        newsDAO.insertNews(news);
+        newsDAO.insert(news);
         model.setViewName("newsCreator");
         return model;
     }

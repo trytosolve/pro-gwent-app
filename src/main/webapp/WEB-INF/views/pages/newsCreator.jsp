@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link href="<c:url value="/resources/css/newsCreator.css" />" rel="stylesheet">
 <script type="text/javascript" src="<c:url value="/resources/js/tinymce/tinymce.min.js"/>"></script>
