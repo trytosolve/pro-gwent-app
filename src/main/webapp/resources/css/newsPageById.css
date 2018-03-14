@@ -2,7 +2,7 @@
     padding-top: 10px;
 }
 
-.news_by_id {
+.article {
     padding: 5px;
 }
 
@@ -11,10 +11,10 @@
     font-weight: 700;
 }
 
-.body_news {
+.article_body {
     font-size: 16px;
 }
 
-.body_news img {
+.article_body img {
     background: rgba(0,0,0,1);
 }

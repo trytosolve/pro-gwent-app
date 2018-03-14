@@ -17,77 +17,96 @@ public class CardRepository {
         this.dbParams = dbParams;
     }
 
-    //TODO в методе 70 строк. Тут нихуя разобрать невозможно. Подели его на логические части
     public List<Card> getCardList(SearchFilter searchFilter) {
         List<Card> cardList = new ArrayList<>();
+        loadDriver();
+        try (Connection conn = DriverManager.getConnection(dbParams.getUrl(), dbParams.getUsername(), dbParams.getPassword())) {
+            String sql = "select name,type,faction,description,url " +
+                    "from webapp.cards where (name LIKE ? or type LIKE ? " +
+                    "or faction LIKE ? or description LIKE ?)";
+            sql = addTypeToQuery(searchFilter, sql);
+            sql = addFactionToQuery(searchFilter, sql);
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            addParamToStmt(searchFilter, stmt);
+            ResultSet rs = stmt.executeQuery();
+            addCardsToList(cardList, rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Cannot get cards from database", e);
+        }
+        return cardList;
+    }
+
+    public void addCardsToList(List<Card> cardList, ResultSet rs) throws SQLException {
+        while (rs.next()) {
+            Card card = new Card();
+            card.setName(rs.getString("name"));
+            card.setType(rs.getString("type"));
+            card.setFaction(rs.getString("faction"));
+            card.setDescription(rs.getString("description"));
+            card.setUrl(rs.getString("url"));
+            cardList.add(card);
+        }
+    }
+
+    public void addParamToStmt(SearchFilter searchFilter, PreparedStatement stmt) throws SQLException {
+        int param = 0;
+        stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
+        stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
+        stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
+        stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
+        if (searchFilter.getCardTypeSet() != null) {
+            if (searchFilter.getCardTypeSet().size() != 0) {
+                for (CardType cardType : searchFilter.getCardTypeSet()) {
+                    stmt.setString(++param,cardType.getDescription());
+                }
+            }
+        }
+        if (searchFilter.getCardFactionSet() != null) {
+            if (searchFilter.getCardFactionSet().size() != 0) {
+                for (CardFaction cardFaction : searchFilter.getCardFactionSet()) {
+                    stmt.setString(++param,cardFaction.getDescription());
+                }
+            }
+        }
+    }
+
+    public String addFactionToQuery(SearchFilter searchFilter, String sql) {
+        if (searchFilter.getCardFactionSet() != null) {
+            if (searchFilter.getCardFactionSet().size() != 0) {
+                sql = sql + " and (";
+                for (int i=0;i<searchFilter.getCardFactionSet().size();i++) {
+                    sql = sql + "faction=?";
+                    if (i != searchFilter.getCardFactionSet().size()-1) {
+                        sql = sql +" or ";
+                    }
+                }
+                sql = sql + ")";
+            }
+        }
+        return sql;
+    }
+
+    public String addTypeToQuery(SearchFilter searchFilter, String sql) {
+        if (searchFilter.getCardTypeSet() != null) {
+            if (searchFilter.getCardTypeSet().size() != 0) {
+                sql = sql + " and (";
+                for (int i=0;i<searchFilter.getCardTypeSet().size();i++) {
+                    sql = sql + "type=?";
+                    if (i != searchFilter.getCardTypeSet().size()-1) {
+                        sql = sql +" or ";
+                    }
+                }
+                sql = sql + ")";
+            }
+        }
+        return sql;
+    }
+
+    public void loadDriver() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Cannot find com.mysql.jdbc.Driver", e);
         }
-        try (Connection conn = DriverManager.getConnection(dbParams.getUrl(), dbParams.getUsername(), dbParams.getPassword())) {
-            String sql = "select name,type,faction,description,url " +
-                    "from webapp.cards where (name LIKE ? or type LIKE ? " +
-                    "or faction LIKE ? or description LIKE ?)";
-            if (searchFilter.getCardTypeSet() != null) {
-                if (searchFilter.getCardTypeSet().size() != 0) {
-                    sql = sql + " and (";
-                    for (int i=0;i<searchFilter.getCardTypeSet().size();i++) {
-                        sql = sql + "type=?";
-                        if (i != searchFilter.getCardTypeSet().size()-1) {
-                            sql = sql +" or ";
-                        }
-                    }
-                    sql = sql + ")";
-                }
-            }
-            if (searchFilter.getCardFactionSet() != null) {
-                if (searchFilter.getCardFactionSet().size() != 0) {
-                    sql = sql + " and (";
-                    for (int i=0;i<searchFilter.getCardFactionSet().size();i++) {
-                        sql = sql + "faction=?";
-                        if (i != searchFilter.getCardFactionSet().size()-1) {
-                            sql = sql +" or ";
-                        }
-                    }
-                    sql = sql + ")";
-                }
-            }
-
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            int param = 0;
-            stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
-            stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
-            stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
-            stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
-            if (searchFilter.getCardTypeSet() != null) {
-                if (searchFilter.getCardTypeSet().size() != 0) {
-                    for (CardType cardType : searchFilter.getCardTypeSet()) {
-                        stmt.setString(++param,cardType.getDescription());
-                    }
-                }
-            }
-            if (searchFilter.getCardFactionSet() != null) {
-                if (searchFilter.getCardFactionSet().size() != 0) {
-                    for (CardFaction cardFaction : searchFilter.getCardFactionSet()) {
-                        stmt.setString(++param,cardFaction.getDescription());
-                    }
-                }
-            }
-
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                Card card = new Card();
-                card.setName(rs.getString("name"));
-                card.setType(rs.getString("type"));
-                card.setFaction(rs.getString("faction"));
-                card.setDescription(rs.getString("description"));
-                card.setUrl(rs.getString("url"));
-                cardList.add(card);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Cannot get cards from database", e);
-        }
-        return cardList;
     }
 }

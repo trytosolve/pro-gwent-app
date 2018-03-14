@@ -4,12 +4,11 @@
 
 <div id="solo_news">
     <div class="container">
-        <div class="news_by_id fon">
-            <!-- TODO by_id не должно быть названием стиля. Это немного странно что стили знают как ищутся новости :D -->
+        <div class="article fon">
             <div class="article_title">
                 ${news.newsTitle}
             </div>
-            <div class="body_news">
+            <div class="article_body">
                 ${news.newsBody}
             </div>
         </div>
