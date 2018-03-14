@@ -53,7 +53,7 @@ public class UserRepository {
 
     }
 
-    public void loadDriver() {
+    private void loadDriver() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {

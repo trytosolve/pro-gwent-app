@@ -3,7 +3,7 @@ package com.iredko.gwent.data;
 public enum CardFaction {
 
     NEUTRAL("Neutral"), NORTHEN_REALMS("Northen Realms"),SCOIATAEL("Scoia'tael"), MONSTERS("Monsters"),
-    SKELIGE("Skellige"), NILFGAARD("Nilfgaard");
+    SKELLIGE("Skellige"), NILFGAARD("Nilfgaard");
 
     public String getDescription() {
         return description;
@@ -15,4 +15,8 @@ public enum CardFaction {
         this.description = desc;
     }
 
+    @Override
+    public String toString() {
+        return description;
+    }
 }

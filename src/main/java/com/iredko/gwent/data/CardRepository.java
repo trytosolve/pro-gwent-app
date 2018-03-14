@@ -18,95 +18,65 @@ public class CardRepository {
     }
 
     public List<Card> getCardList(SearchFilter searchFilter) {
-        List<Card> cardList = new ArrayList<>();
         loadDriver();
         try (Connection conn = DriverManager.getConnection(dbParams.getUrl(), dbParams.getUsername(), dbParams.getPassword())) {
-            String sql = "select name,type,faction,description,url " +
-                    "from webapp.cards where (name LIKE ? or type LIKE ? " +
-                    "or faction LIKE ? or description LIKE ?)";
-            sql = addTypeToQuery(searchFilter, sql);
-            sql = addFactionToQuery(searchFilter, sql);
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            addParamToStmt(searchFilter, stmt);
-            ResultSet rs = stmt.executeQuery();
-            addCardsToList(cardList, rs);
+
+            List<ColumnFilter> cardFiltersList = new ArrayList();
+            if (!searchFilter.getSearchParam().equals("")) {
+                StringFilter cardNameFilter = new StringFilter("name", searchFilter.getSearchParam());
+                cardFiltersList.add(cardNameFilter);
+            }
+            if (!searchFilter.getSearchParam().equals("")) {
+                StringFilter descriptionFilter = new StringFilter("description", searchFilter.getSearchParam());
+                cardFiltersList.add(descriptionFilter);
+            }
+            if (searchFilter.getCardTypeSet() != null) {
+                if (searchFilter.getCardTypeSet().size()!=0) {
+                    OptionFilter<CardType> cardTypeFilter =
+                            new OptionFilter<CardType>("type", new ArrayList<>(searchFilter.getCardTypeSet()));
+                    cardFiltersList.add(cardTypeFilter);
+                }
+            }
+            if (searchFilter.getCardFactionSet() != null) {
+                if (searchFilter.getCardFactionSet().size()!=0) {
+                    OptionFilter<CardFaction> cardFactionFilter =
+                            new OptionFilter<CardFaction>("faction", new ArrayList<>(searchFilter.getCardFactionSet()));
+                    cardFiltersList.add(cardFactionFilter);
+                }
+            }
+            ResultSet rs = new CardsStatementGenerator().generate(conn, cardFiltersList).executeQuery();
+            return parseResults(rs);
+
         } catch (SQLException e) {
-            throw new RuntimeException("Cannot get cards from database", e);
+            e.printStackTrace();
         }
-        return cardList;
+        return null;
     }
 
-    public void addCardsToList(List<Card> cardList, ResultSet rs) throws SQLException {
-        while (rs.next()) {
-            Card card = new Card();
-            card.setName(rs.getString("name"));
-            card.setType(rs.getString("type"));
-            card.setFaction(rs.getString("faction"));
-            card.setDescription(rs.getString("description"));
-            card.setUrl(rs.getString("url"));
-            cardList.add(card);
-        }
-    }
-
-    public void addParamToStmt(SearchFilter searchFilter, PreparedStatement stmt) throws SQLException {
-        int param = 0;
-        stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
-        stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
-        stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
-        stmt.setString(++param, "%" + searchFilter.getSearchParam() + "%");
-        if (searchFilter.getCardTypeSet() != null) {
-            if (searchFilter.getCardTypeSet().size() != 0) {
-                for (CardType cardType : searchFilter.getCardTypeSet()) {
-                    stmt.setString(++param,cardType.getDescription());
-                }
-            }
-        }
-        if (searchFilter.getCardFactionSet() != null) {
-            if (searchFilter.getCardFactionSet().size() != 0) {
-                for (CardFaction cardFaction : searchFilter.getCardFactionSet()) {
-                    stmt.setString(++param,cardFaction.getDescription());
-                }
-            }
-        }
-    }
-
-    public String addFactionToQuery(SearchFilter searchFilter, String sql) {
-        if (searchFilter.getCardFactionSet() != null) {
-            if (searchFilter.getCardFactionSet().size() != 0) {
-                sql = sql + " and (";
-                for (int i=0;i<searchFilter.getCardFactionSet().size();i++) {
-                    sql = sql + "faction=?";
-                    if (i != searchFilter.getCardFactionSet().size()-1) {
-                        sql = sql +" or ";
-                    }
-                }
-                sql = sql + ")";
-            }
-        }
-        return sql;
-    }
-
-    public String addTypeToQuery(SearchFilter searchFilter, String sql) {
-        if (searchFilter.getCardTypeSet() != null) {
-            if (searchFilter.getCardTypeSet().size() != 0) {
-                sql = sql + " and (";
-                for (int i=0;i<searchFilter.getCardTypeSet().size();i++) {
-                    sql = sql + "type=?";
-                    if (i != searchFilter.getCardTypeSet().size()-1) {
-                        sql = sql +" or ";
-                    }
-                }
-                sql = sql + ")";
-            }
-        }
-        return sql;
-    }
-
-    public void loadDriver() {
+    private void loadDriver() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Cannot find com.mysql.jdbc.Driver", e);
         }
     }
+
+    private List<Card> parseResults(ResultSet rs) throws SQLException {
+        List<Card> list = new ArrayList<>();
+        while (rs.next()) {
+            list.add(parsCard(rs));
+        }
+        return list;
+    }
+
+    private Card parsCard(ResultSet rs) throws SQLException {
+        Card card = new Card();
+        card.setName(rs.getString("name"));
+        card.setType(rs.getString("type"));
+        card.setFaction(rs.getString("faction"));
+        card.setDescription(rs.getString("description"));
+        card.setUrl(rs.getString("url"));
+        return card;
+    }
+
 }
