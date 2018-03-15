@@ -22,29 +22,41 @@ public class CardRepository {
         loadDriver();
         try (Connection conn = DriverManager.getConnection(dbParams.getUrl(), dbParams.getUsername(), dbParams.getPassword())) {
             List<ColumnFilter> cardFiltersList = new ArrayList<ColumnFilter>();
-            if (!searchFilter.getSearchParam().equals("")) {
-                MultiFieldSearchFilter cardNameFilter = new MultiFieldSearchFilter(
-                        Arrays.asList("name","description"), searchFilter.getSearchParam());
-                cardFiltersList.add(cardNameFilter);
-            }
-            if (searchFilter.getCardTypeSet() != null) {
-                if (searchFilter.getCardTypeSet().size()!=0) {
-                    OptionFilter<CardType> cardTypeFilter =
-                            new OptionFilter<CardType>("type", new ArrayList<>(searchFilter.getCardTypeSet()));
-                    cardFiltersList.add(cardTypeFilter);
-                }
-            }
-            if (searchFilter.getCardFactionSet() != null) {
-                if (searchFilter.getCardFactionSet().size()!=0) {
-                    OptionFilter<CardFaction> cardFactionFilter =
-                            new OptionFilter<CardFaction>("faction", new ArrayList<>(searchFilter.getCardFactionSet()));
-                    cardFiltersList.add(cardFactionFilter);
-                }
-            }
+            addSearchFilter(searchFilter, cardFiltersList);
+            addCardTypeFilter(searchFilter, cardFiltersList);
+            addCardFactionFilter(searchFilter, cardFiltersList);
             ResultSet rs = new CardsStatementGenerator().generate(conn, cardFiltersList).executeQuery();
             return parseResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void addCardFactionFilter(SearchFilter searchFilter, List<ColumnFilter> cardFiltersList) {
+        if (searchFilter.getCardFactionSet() != null) {
+            if (searchFilter.getCardFactionSet().size()!=0) {
+                OptionFilter<CardFaction> cardFactionFilter =
+                        new OptionFilter<CardFaction>("faction", new ArrayList<>(searchFilter.getCardFactionSet()));
+                cardFiltersList.add(cardFactionFilter);
+            }
+        }
+    }
+
+    public void addCardTypeFilter(SearchFilter searchFilter, List<ColumnFilter> cardFiltersList) {
+        if (searchFilter.getCardTypeSet() != null) {
+            if (searchFilter.getCardTypeSet().size()!=0) {
+                OptionFilter<CardType> cardTypeFilter =
+                        new OptionFilter<CardType>("type", new ArrayList<>(searchFilter.getCardTypeSet()));
+                cardFiltersList.add(cardTypeFilter);
+            }
+        }
+    }
+
+    public void addSearchFilter(SearchFilter searchFilter, List<ColumnFilter> cardFiltersList) {
+        if (!searchFilter.getSearchParam().equals("")) {
+            MultiFieldSearchFilter cardNameFilter = new MultiFieldSearchFilter(
+                    Arrays.asList("name","description"), searchFilter.getSearchParam());
+            cardFiltersList.add(cardNameFilter);
         }
     }
 
