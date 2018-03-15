@@ -34,8 +34,8 @@ public class CardsController {
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView searchCardsLibrary(ModelAndView model, SearchForm searchForm) {
         model.addObject("searchForm", searchForm);
-        SearchFilter searchFilter = new SearchFilter(searchForm.getSearchParam(), searchForm.getTypesList(),
-                searchForm.getFactionsList());
+        SearchFilter searchFilter = new SearchFilter(searchForm.getSearchParam(), searchForm.getTypesSet(),
+                searchForm.getFactionsSet());
         model.addObject("cardList", cardRepository.getCardList(searchFilter));
         model.addObject("possibleTypes", CardType.values());
         model.addObject("possibleFactions", CardFaction.values());

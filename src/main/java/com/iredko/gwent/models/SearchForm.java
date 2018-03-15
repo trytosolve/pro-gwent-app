@@ -4,17 +4,17 @@ import com.iredko.gwent.data.CardFaction;
 import com.iredko.gwent.data.CardType;
 
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 
 public class SearchForm {
 
-    @Size(min = 0,max = 20)
-    String searchParam;
+    @Size(max = 20)
+    private String searchParam;
 
-    Set<CardType> typesList;
+    private Set<CardType> typesSet;
 
-    Set<CardFaction> factionsList;
-
+    private Set<CardFaction> factionsSet;
 
     public String getSearchParam() {
         return searchParam;
@@ -24,19 +24,19 @@ public class SearchForm {
         this.searchParam = searchParam;
     }
 
-    public Set<CardType> getTypesList() {
-        return typesList;
+    public Set<CardType> getTypesSet() {
+        return typesSet;
     }
 
-    public void setTypesList(Set<CardType> typesList) {
-        this.typesList = typesList;
+    public void setTypesSet(Set<CardType> typesSet) {
+        this.typesSet = typesSet;
     }
 
-    public Set<CardFaction> getFactionsList() {
-        return factionsList;
+    public Set<CardFaction> getFactionsSet() {
+        return factionsSet;
     }
 
-    public void setFactionsList(Set<CardFaction> factionsList) {
-        this.factionsList = factionsList;
+    public void setFactionsSet(Set<CardFaction> factionsSet) {
+        this.factionsSet = factionsSet;
     }
 }
