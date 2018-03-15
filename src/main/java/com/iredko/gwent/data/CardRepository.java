@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -20,15 +21,11 @@ public class CardRepository {
     public List<Card> getCardList(SearchFilter searchFilter) {
         loadDriver();
         try (Connection conn = DriverManager.getConnection(dbParams.getUrl(), dbParams.getUsername(), dbParams.getPassword())) {
-
-            List<ColumnFilter> cardFiltersList = new ArrayList();
+            List<ColumnFilter> cardFiltersList = new ArrayList<ColumnFilter>();
             if (!searchFilter.getSearchParam().equals("")) {
-                StringFilter cardNameFilter = new StringFilter("name", searchFilter.getSearchParam());
+                MultiFieldSearchFilter cardNameFilter = new MultiFieldSearchFilter(
+                        Arrays.asList("name","description"), searchFilter.getSearchParam());
                 cardFiltersList.add(cardNameFilter);
-            }
-            if (!searchFilter.getSearchParam().equals("")) {
-                StringFilter descriptionFilter = new StringFilter("description", searchFilter.getSearchParam());
-                cardFiltersList.add(descriptionFilter);
             }
             if (searchFilter.getCardTypeSet() != null) {
                 if (searchFilter.getCardTypeSet().size()!=0) {
@@ -46,11 +43,9 @@ public class CardRepository {
             }
             ResultSet rs = new CardsStatementGenerator().generate(conn, cardFiltersList).executeQuery();
             return parseResults(rs);
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     private void loadDriver() {

@@ -1,6 +1,6 @@
 package com.iredko.gwent.controllers;
 
-import com.iredko.gwent.DAO.NewsDAO;
+import com.iredko.gwent.data.NewsDAO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -38,7 +38,7 @@
         <property name="dataSource" ref="ds"></property>
     </bean>
 
-    <bean id="newsdao" class="com.iredko.gwent.DAO.NewsDAO">
+    <bean id="newsdao" class="com.iredko.gwent.data.NewsDAO">
         <!--<property name="jdbcTemplate" ref="jdbcTemplate"></property>-->
         <constructor-arg name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>

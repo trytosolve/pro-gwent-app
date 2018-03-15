@@ -1,4 +1,4 @@
-package com.iredko.gwent.DAO;
+package com.iredko.gwent.data;
 
 import com.iredko.gwent.models.News;
 import org.springframework.jdbc.core.RowMapper;
