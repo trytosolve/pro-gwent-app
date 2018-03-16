@@ -22,7 +22,7 @@ public class CardRepository {
         loadDriver();
         try (Connection conn = DriverManager.getConnection(dbParams.getUrl(), dbParams.getUsername(), dbParams.getPassword())) {
             List<ColumnFilter> cardFiltersList = new ArrayList<ColumnFilter>();
-            addSearchFilter(searchFilter, cardFiltersList);
+            addMultiFieldFilter(searchFilter, cardFiltersList);
             addCardTypeFilter(searchFilter, cardFiltersList);
             addCardFactionFilter(searchFilter, cardFiltersList);
             ResultSet rs = new CardsStatementGenerator().generate(conn, cardFiltersList).executeQuery();
@@ -52,7 +52,7 @@ public class CardRepository {
         }
     }
 
-    public void addSearchFilter(SearchFilter searchFilter, List<ColumnFilter> cardFiltersList) {
+    public void addMultiFieldFilter(SearchFilter searchFilter, List<ColumnFilter> cardFiltersList) {
         if (!searchFilter.getSearchParam().equals("")) {
             MultiFieldSearchFilter cardNameFilter = new MultiFieldSearchFilter(
                     Arrays.asList("name","description"), searchFilter.getSearchParam());
